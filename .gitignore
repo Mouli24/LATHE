@@ -11,3 +11,4 @@ Thumbs.db
 *.egg-info/
 .venv/
 venv/
+.vercel
