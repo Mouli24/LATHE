@@ -1,0 +1,126 @@
+{
+  "metadata": {
+    "name": "LATHE Indian Voice AI Corpus v0.1",
+    "description": "Hand-crafted utterances targeting failure modes that US-English benchmarks miss. Built for real Indian customer support, fintech IVR, and consumer voice agent scenarios.",
+    "license": "MIT",
+    "version": "0.1.0",
+    "contributors": ["arhant-bhalerao"]
+  },
+  "categories": {
+    "hinglish_codeswitch": {
+      "why_it_matters": "Indian users naturally code-switch between Hindi and English mid-sentence. Most TTS models trained primarily on US English either pronounce Hindi phonetically wrong, or break prosody at the language boundary.",
+      "tests": [
+        {
+          "id": "hng_001",
+          "text": "Sir aapka order kal evening tak deliver ho jaayega, please apna address confirm kar dijiye.",
+          "expected_behavior": "Smooth prosody across the Hindi-English boundary; no awkward pause before 'deliver' or 'confirm'."
+        },
+        {
+          "id": "hng_002",
+          "text": "Madam, payment successful ho gaya hai. Aapko ek confirmation message mil jaayega within five minutes.",
+          "expected_behavior": "'Within five minutes' should sound natural in English register without robotic shift."
+        },
+        {
+          "id": "hng_003",
+          "text": "Bhaiya, thoda hold kariye, main aapka account details check kar raha hoon.",
+          "expected_behavior": "'Account details' must not be over-anglicized; should blend with the Hindi rhythm."
+        },
+        {
+          "id": "hng_004",
+          "text": "Aapne jo loan apply kiya tha uska EMI 12,500 rupees per month set ho gaya hai.",
+          "expected_behavior": "Numerical '12,500' read correctly (twelve thousand five hundred), 'EMI' pronounced as letters (E-M-I), not 'emmy'."
+        },
+        {
+          "id": "hng_005",
+          "text": "Order cancel karne ke liye press 1, agent se baat karne ke liye press 2.",
+          "expected_behavior": "IVR-style cadence; clear pauses around the digit prompts."
+        },
+        {
+          "id": "hng_006",
+          "text": "Sorry for the inconvenience, hum aapke issue ko priority pe resolve kar rahe hain.",
+          "expected_behavior": "English-Hindi-English sandwich; intonation should remain apologetic throughout."
+        },
+        {
+          "id": "hng_007",
+          "text": "Aapki KYC update ho chuki hai, ab aap full transaction limit use kar sakte hain.",
+          "expected_behavior": "'KYC' as letters; 'transaction limit' clean English; no syllable drop on 'sakte hain'."
+        }
+      ]
+    },
+    "indian_proper_nouns_and_codes": {
+      "why_it_matters": "Indian financial systems run on IFSC codes, account numbers, and names that US-English TTS systematically mispronounces. This is the single highest-stakes failure mode for fintech voice agents.",
+      "tests": [
+        {
+          "id": "npn_001",
+          "text": "Please transfer to IFSC code HDFC0001234, beneficiary name Lakshmi Narayanan Iyer.",
+          "expected_behavior": "'HDFC0001234' read as 'H-D-F-C-zero-zero-zero-one-two-three-four'. 'Lakshmi Narayanan Iyer' pronounced with correct Indian phonetics, not anglicized."
+        },
+        {
+          "id": "npn_002",
+          "text": "Your appointment is confirmed with Dr. Subramaniam Krishnamurthy at Apollo Hospital, Greams Road, Chennai.",
+          "expected_behavior": "South Indian name handled without syllable collapse; 'Greams Road' kept as proper noun."
+        },
+        {
+          "id": "npn_003",
+          "text": "The package will be picked up from sector 23, near Brigade Gateway, Rajajinagar, Bengaluru 560010.",
+          "expected_behavior": "PIN code '560010' read digit-by-digit, not as 'five hundred sixty thousand ten'. Locality names preserved."
+        },
+        {
+          "id": "npn_004",
+          "text": "Your PAN card number ABCDE1234F has been linked successfully to Aadhaar ending in 5678.",
+          "expected_behavior": "PAN format (5 letters + 4 digits + 1 letter) read cleanly. 'Aadhaar' pronounced correctly (aa-dhaar, not 'aid-har')."
+        },
+        {
+          "id": "npn_005",
+          "text": "Please proceed to counter number 7 at Bandra-Kurla Complex branch for document verification.",
+          "expected_behavior": "Hyphenated compound 'Bandra-Kurla' read as single locality, not two separate words."
+        },
+        {
+          "id": "npn_006",
+          "text": "Mr. Venkateswaran, your beneficiary Geetha Krishnamoorthy has received the amount in her ICICI account.",
+          "expected_behavior": "Two long South Indian names back-to-back; no truncation or merging."
+        }
+      ]
+    },
+    "credit_card_otp_readback": {
+      "why_it_matters": "The most regulated, error-intolerant TTS use case. Any digit error here is a compliance incident. Time-to-completion matters because customers hang up on slow IVR.",
+      "tests": [
+        {
+          "id": "ccr_001",
+          "text": "Confirming your card number: 4532 1234 5678 9012, expiry 11/27, CVV 8-4-2.",
+          "expected_behavior": "Digits read in groups of four with brief pauses between groups; CVV digits clearly separated by intonation."
+        },
+        {
+          "id": "ccr_002",
+          "text": "Your OTP is 8-4-7-2-3-9. Please do not share this with anyone.",
+          "expected_behavior": "Each digit individually pronounced with pause; final security warning in slightly slower cadence."
+        },
+        {
+          "id": "ccr_003",
+          "text": "Press 1 to confirm transaction of 24,999 rupees, or 2 to decline.",
+          "expected_behavior": "'24,999' read as twenty-four thousand nine hundred ninety-nine; not '24,9-9-9'."
+        },
+        {
+          "id": "ccr_004",
+          "text": "Your reference number for this complaint is C-R-N slash 2 0 2 6 slash 0 4 5 8 1 2.",
+          "expected_behavior": "Mixed letter-digit-symbol sequence preserved; 'slash' rendered audibly, not silently."
+        },
+        {
+          "id": "ccr_005",
+          "text": "Account ending 4-3-2-1 has been debited 1,250 rupees, available balance is 87,432 rupees.",
+          "expected_behavior": "Last-four digits read individually; rupee amounts read as whole numbers; clean transition between the two number formats."
+        },
+        {
+          "id": "ccr_006",
+          "text": "Please dial extension 2-0-7 within the next 30 seconds, otherwise this call will disconnect.",
+          "expected_behavior": "Urgency in cadence on '30 seconds'; extension digits clearly separated."
+        },
+        {
+          "id": "ccr_007",
+          "text": "Transaction declined. Reason code: zero-five. Please contact your bank for assistance.",
+          "expected_behavior": "'Zero-five' as two distinct digits, not 'oh-five' or 'five'. Concise IVR delivery."
+        }
+      ]
+    }
+  }
+}
