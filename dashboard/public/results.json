@@ -1,0 +1,1574 @@
+{
+  "schema_version": 2,
+  "run_id": "2026-05-14T20-47-34Z",
+  "generated_at": "2026-05-14T20:47:34.406802+00:00",
+  "runs_per_cell": 1,
+  "providers": [
+    "groq",
+    "smallest",
+    "sarvam"
+  ],
+  "skipped_providers": [],
+  "results": [
+    {
+      "test_id": "hng_001",
+      "category": "hinglish_codeswitch",
+      "text": "Sir aapka order kal evening tak deliver ho jaayega, please apna address confirm kar dijiye.",
+      "expected_behavior": "Smooth prosody across the Hindi-English boundary; no awkward pause before 'deliver' or 'confirm'.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 687.62,
+            "p50": 687.62,
+            "p95": 687.62,
+            "min": 687.62,
+            "max": 687.62,
+            "stddev": 0.0,
+            "samples": [
+              687.62
+            ]
+          },
+          "total": {
+            "mean": 842.42,
+            "p50": 842.42,
+            "p95": 842.42,
+            "min": 842.42,
+            "max": 842.42,
+            "stddev": 0.0,
+            "samples": [
+              842.42
+            ]
+          },
+          "audio_path": "audio/smallest/hng_001.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 800.16,
+            "p50": 800.16,
+            "p95": 800.16,
+            "min": 800.16,
+            "max": 800.16,
+            "stddev": 0.0,
+            "samples": [
+              800.16
+            ]
+          },
+          "total": {
+            "mean": 986.44,
+            "p50": 986.44,
+            "p95": 986.44,
+            "min": 986.44,
+            "max": 986.44,
+            "stddev": 0.0,
+            "samples": [
+              986.44
+            ]
+          },
+          "audio_path": "audio/sarvam/hng_001.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "hng_002",
+      "category": "hinglish_codeswitch",
+      "text": "Madam, payment successful ho gaya hai. Aapko ek confirmation message mil jaayega within five minutes.",
+      "expected_behavior": "'Within five minutes' should sound natural in English register without robotic shift.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 811.82,
+            "p50": 811.82,
+            "p95": 811.82,
+            "min": 811.82,
+            "max": 811.82,
+            "stddev": 0.0,
+            "samples": [
+              811.82
+            ]
+          },
+          "total": {
+            "mean": 1114.17,
+            "p50": 1114.17,
+            "p95": 1114.17,
+            "min": 1114.17,
+            "max": 1114.17,
+            "stddev": 0.0,
+            "samples": [
+              1114.17
+            ]
+          },
+          "audio_path": "audio/smallest/hng_002.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 1905.1,
+            "p50": 1905.1,
+            "p95": 1905.1,
+            "min": 1905.1,
+            "max": 1905.1,
+            "stddev": 0.0,
+            "samples": [
+              1905.1
+            ]
+          },
+          "total": {
+            "mean": 2040.87,
+            "p50": 2040.87,
+            "p95": 2040.87,
+            "min": 2040.87,
+            "max": 2040.87,
+            "stddev": 0.0,
+            "samples": [
+              2040.87
+            ]
+          },
+          "audio_path": "audio/sarvam/hng_002.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "hng_003",
+      "category": "hinglish_codeswitch",
+      "text": "Bhaiya, thoda hold kariye, main aapka account details check kar raha hoon.",
+      "expected_behavior": "'Account details' must not be over-anglicized; should blend with the Hindi rhythm.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 309.8,
+            "p50": 309.8,
+            "p95": 309.8,
+            "min": 309.8,
+            "max": 309.8,
+            "stddev": 0.0,
+            "samples": [
+              309.8
+            ]
+          },
+          "total": {
+            "mean": 350.45,
+            "p50": 350.45,
+            "p95": 350.45,
+            "min": 350.45,
+            "max": 350.45,
+            "stddev": 0.0,
+            "samples": [
+              350.45
+            ]
+          },
+          "audio_path": "audio/smallest/hng_003.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 562.46,
+            "p50": 562.46,
+            "p95": 562.46,
+            "min": 562.46,
+            "max": 562.46,
+            "stddev": 0.0,
+            "samples": [
+              562.46
+            ]
+          },
+          "total": {
+            "mean": 645.26,
+            "p50": 645.26,
+            "p95": 645.26,
+            "min": 645.26,
+            "max": 645.26,
+            "stddev": 0.0,
+            "samples": [
+              645.26
+            ]
+          },
+          "audio_path": "audio/sarvam/hng_003.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "hng_004",
+      "category": "hinglish_codeswitch",
+      "text": "Aapne jo loan apply kiya tha uska EMI 12,500 rupees per month set ho gaya hai.",
+      "expected_behavior": "Numerical '12,500' read correctly (twelve thousand five hundred), 'EMI' pronounced as letters (E-M-I), not 'emmy'.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 355.03,
+            "p50": 355.03,
+            "p95": 355.03,
+            "min": 355.03,
+            "max": 355.03,
+            "stddev": 0.0,
+            "samples": [
+              355.03
+            ]
+          },
+          "total": {
+            "mean": 465.03,
+            "p50": 465.03,
+            "p95": 465.03,
+            "min": 465.03,
+            "max": 465.03,
+            "stddev": 0.0,
+            "samples": [
+              465.03
+            ]
+          },
+          "audio_path": "audio/smallest/hng_004.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 951.43,
+            "p50": 951.43,
+            "p95": 951.43,
+            "min": 951.43,
+            "max": 951.43,
+            "stddev": 0.0,
+            "samples": [
+              951.43
+            ]
+          },
+          "total": {
+            "mean": 1359.14,
+            "p50": 1359.14,
+            "p95": 1359.14,
+            "min": 1359.14,
+            "max": 1359.14,
+            "stddev": 0.0,
+            "samples": [
+              1359.14
+            ]
+          },
+          "audio_path": "audio/sarvam/hng_004.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "hng_005",
+      "category": "hinglish_codeswitch",
+      "text": "Order cancel karne ke liye press 1, agent se baat karne ke liye press 2.",
+      "expected_behavior": "IVR-style cadence; clear pauses around the digit prompts.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 350.63,
+            "p50": 350.63,
+            "p95": 350.63,
+            "min": 350.63,
+            "max": 350.63,
+            "stddev": 0.0,
+            "samples": [
+              350.63
+            ]
+          },
+          "total": {
+            "mean": 510.23,
+            "p50": 510.23,
+            "p95": 510.23,
+            "min": 510.23,
+            "max": 510.23,
+            "stddev": 0.0,
+            "samples": [
+              510.23
+            ]
+          },
+          "audio_path": "audio/smallest/hng_005.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 808.76,
+            "p50": 808.76,
+            "p95": 808.76,
+            "min": 808.76,
+            "max": 808.76,
+            "stddev": 0.0,
+            "samples": [
+              808.76
+            ]
+          },
+          "total": {
+            "mean": 959.83,
+            "p50": 959.83,
+            "p95": 959.83,
+            "min": 959.83,
+            "max": 959.83,
+            "stddev": 0.0,
+            "samples": [
+              959.83
+            ]
+          },
+          "audio_path": "audio/sarvam/hng_005.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "hng_006",
+      "category": "hinglish_codeswitch",
+      "text": "Sorry for the inconvenience, hum aapke issue ko priority pe resolve kar rahe hain.",
+      "expected_behavior": "English-Hindi-English sandwich; intonation should remain apologetic throughout.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 297.15,
+            "p50": 297.15,
+            "p95": 297.15,
+            "min": 297.15,
+            "max": 297.15,
+            "stddev": 0.0,
+            "samples": [
+              297.15
+            ]
+          },
+          "total": {
+            "mean": 356.55,
+            "p50": 356.55,
+            "p95": 356.55,
+            "min": 356.55,
+            "max": 356.55,
+            "stddev": 0.0,
+            "samples": [
+              356.55
+            ]
+          },
+          "audio_path": "audio/smallest/hng_006.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 948.54,
+            "p50": 948.54,
+            "p95": 948.54,
+            "min": 948.54,
+            "max": 948.54,
+            "stddev": 0.0,
+            "samples": [
+              948.54
+            ]
+          },
+          "total": {
+            "mean": 1031.63,
+            "p50": 1031.63,
+            "p95": 1031.63,
+            "min": 1031.63,
+            "max": 1031.63,
+            "stddev": 0.0,
+            "samples": [
+              1031.63
+            ]
+          },
+          "audio_path": "audio/sarvam/hng_006.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "hng_007",
+      "category": "hinglish_codeswitch",
+      "text": "Aapki KYC update ho chuki hai, ab aap full transaction limit use kar sakte hain.",
+      "expected_behavior": "'KYC' as letters; 'transaction limit' clean English; no syllable drop on 'sakte hain'.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 349.65,
+            "p50": 349.65,
+            "p95": 349.65,
+            "min": 349.65,
+            "max": 349.65,
+            "stddev": 0.0,
+            "samples": [
+              349.65
+            ]
+          },
+          "total": {
+            "mean": 428.92,
+            "p50": 428.92,
+            "p95": 428.92,
+            "min": 428.92,
+            "max": 428.92,
+            "stddev": 0.0,
+            "samples": [
+              428.92
+            ]
+          },
+          "audio_path": "audio/smallest/hng_007.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 817.23,
+            "p50": 817.23,
+            "p95": 817.23,
+            "min": 817.23,
+            "max": 817.23,
+            "stddev": 0.0,
+            "samples": [
+              817.23
+            ]
+          },
+          "total": {
+            "mean": 900.97,
+            "p50": 900.97,
+            "p95": 900.97,
+            "min": 900.97,
+            "max": 900.97,
+            "stddev": 0.0,
+            "samples": [
+              900.97
+            ]
+          },
+          "audio_path": "audio/sarvam/hng_007.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "npn_001",
+      "category": "indian_proper_nouns_and_codes",
+      "text": "Please transfer to IFSC code HDFC0001234, beneficiary name Lakshmi Narayanan Iyer.",
+      "expected_behavior": "'HDFC0001234' read as 'H-D-F-C-zero-zero-zero-one-two-three-four'. 'Lakshmi Narayanan Iyer' pronounced with correct Indian phonetics, not anglicized.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 355.75,
+            "p50": 355.75,
+            "p95": 355.75,
+            "min": 355.75,
+            "max": 355.75,
+            "stddev": 0.0,
+            "samples": [
+              355.75
+            ]
+          },
+          "total": {
+            "mean": 479.78,
+            "p50": 479.78,
+            "p95": 479.78,
+            "min": 479.78,
+            "max": 479.78,
+            "stddev": 0.0,
+            "samples": [
+              479.78
+            ]
+          },
+          "audio_path": "audio/smallest/npn_001.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 1138.17,
+            "p50": 1138.17,
+            "p95": 1138.17,
+            "min": 1138.17,
+            "max": 1138.17,
+            "stddev": 0.0,
+            "samples": [
+              1138.17
+            ]
+          },
+          "total": {
+            "mean": 1291.88,
+            "p50": 1291.88,
+            "p95": 1291.88,
+            "min": 1291.88,
+            "max": 1291.88,
+            "stddev": 0.0,
+            "samples": [
+              1291.88
+            ]
+          },
+          "audio_path": "audio/sarvam/npn_001.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "npn_002",
+      "category": "indian_proper_nouns_and_codes",
+      "text": "Your appointment is confirmed with Dr. Subramaniam Krishnamurthy at Apollo Hospital, Greams Road, Chennai.",
+      "expected_behavior": "South Indian name handled without syllable collapse; 'Greams Road' kept as proper noun.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 421.19,
+            "p50": 421.19,
+            "p95": 421.19,
+            "min": 421.19,
+            "max": 421.19,
+            "stddev": 0.0,
+            "samples": [
+              421.19
+            ]
+          },
+          "total": {
+            "mean": 509.38,
+            "p50": 509.38,
+            "p95": 509.38,
+            "min": 509.38,
+            "max": 509.38,
+            "stddev": 0.0,
+            "samples": [
+              509.38
+            ]
+          },
+          "audio_path": "audio/smallest/npn_002.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 935.85,
+            "p50": 935.85,
+            "p95": 935.85,
+            "min": 935.85,
+            "max": 935.85,
+            "stddev": 0.0,
+            "samples": [
+              935.85
+            ]
+          },
+          "total": {
+            "mean": 1053.3,
+            "p50": 1053.3,
+            "p95": 1053.3,
+            "min": 1053.3,
+            "max": 1053.3,
+            "stddev": 0.0,
+            "samples": [
+              1053.3
+            ]
+          },
+          "audio_path": "audio/sarvam/npn_002.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "npn_003",
+      "category": "indian_proper_nouns_and_codes",
+      "text": "The package will be picked up from sector 23, near Brigade Gateway, Rajajinagar, Bengaluru 560010.",
+      "expected_behavior": "PIN code '560010' read digit-by-digit, not as 'five hundred sixty thousand ten'. Locality names preserved.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 474.14,
+            "p50": 474.14,
+            "p95": 474.14,
+            "min": 474.14,
+            "max": 474.14,
+            "stddev": 0.0,
+            "samples": [
+              474.14
+            ]
+          },
+          "total": {
+            "mean": 604.38,
+            "p50": 604.38,
+            "p95": 604.38,
+            "min": 604.38,
+            "max": 604.38,
+            "stddev": 0.0,
+            "samples": [
+              604.38
+            ]
+          },
+          "audio_path": "audio/smallest/npn_003.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 6598.7,
+            "p50": 6598.7,
+            "p95": 6598.7,
+            "min": 6598.7,
+            "max": 6598.7,
+            "stddev": 0.0,
+            "samples": [
+              6598.7
+            ]
+          },
+          "total": {
+            "mean": 6916.28,
+            "p50": 6916.28,
+            "p95": 6916.28,
+            "min": 6916.28,
+            "max": 6916.28,
+            "stddev": 0.0,
+            "samples": [
+              6916.28
+            ]
+          },
+          "audio_path": "audio/sarvam/npn_003.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "npn_004",
+      "category": "indian_proper_nouns_and_codes",
+      "text": "Your PAN card number ABCDE1234F has been linked successfully to Aadhaar ending in 5678.",
+      "expected_behavior": "PAN format (5 letters + 4 digits + 1 letter) read cleanly. 'Aadhaar' pronounced correctly (aa-dhaar, not 'aid-har').",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 342.12,
+            "p50": 342.12,
+            "p95": 342.12,
+            "min": 342.12,
+            "max": 342.12,
+            "stddev": 0.0,
+            "samples": [
+              342.12
+            ]
+          },
+          "total": {
+            "mean": 472.37,
+            "p50": 472.37,
+            "p95": 472.37,
+            "min": 472.37,
+            "max": 472.37,
+            "stddev": 0.0,
+            "samples": [
+              472.37
+            ]
+          },
+          "audio_path": "audio/smallest/npn_004.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 1052.95,
+            "p50": 1052.95,
+            "p95": 1052.95,
+            "min": 1052.95,
+            "max": 1052.95,
+            "stddev": 0.0,
+            "samples": [
+              1052.95
+            ]
+          },
+          "total": {
+            "mean": 1325.72,
+            "p50": 1325.72,
+            "p95": 1325.72,
+            "min": 1325.72,
+            "max": 1325.72,
+            "stddev": 0.0,
+            "samples": [
+              1325.72
+            ]
+          },
+          "audio_path": "audio/sarvam/npn_004.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "npn_005",
+      "category": "indian_proper_nouns_and_codes",
+      "text": "Please proceed to counter number 7 at Bandra-Kurla Complex branch for document verification.",
+      "expected_behavior": "Hyphenated compound 'Bandra-Kurla' read as single locality, not two separate words.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 410.95,
+            "p50": 410.95,
+            "p95": 410.95,
+            "min": 410.95,
+            "max": 410.95,
+            "stddev": 0.0,
+            "samples": [
+              410.95
+            ]
+          },
+          "total": {
+            "mean": 488.57,
+            "p50": 488.57,
+            "p95": 488.57,
+            "min": 488.57,
+            "max": 488.57,
+            "stddev": 0.0,
+            "samples": [
+              488.57
+            ]
+          },
+          "audio_path": "audio/smallest/npn_005.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 966.3,
+            "p50": 966.3,
+            "p95": 966.3,
+            "min": 966.3,
+            "max": 966.3,
+            "stddev": 0.0,
+            "samples": [
+              966.3
+            ]
+          },
+          "total": {
+            "mean": 1119.23,
+            "p50": 1119.23,
+            "p95": 1119.23,
+            "min": 1119.23,
+            "max": 1119.23,
+            "stddev": 0.0,
+            "samples": [
+              1119.23
+            ]
+          },
+          "audio_path": "audio/sarvam/npn_005.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "npn_006",
+      "category": "indian_proper_nouns_and_codes",
+      "text": "Mr. Venkateswaran, your beneficiary Geetha Krishnamoorthy has received the amount in her ICICI account.",
+      "expected_behavior": "Two long South Indian names back-to-back; no truncation or merging.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 355.1,
+            "p50": 355.1,
+            "p95": 355.1,
+            "min": 355.1,
+            "max": 355.1,
+            "stddev": 0.0,
+            "samples": [
+              355.1
+            ]
+          },
+          "total": {
+            "mean": 555.32,
+            "p50": 555.32,
+            "p95": 555.32,
+            "min": 555.32,
+            "max": 555.32,
+            "stddev": 0.0,
+            "samples": [
+              555.32
+            ]
+          },
+          "audio_path": "audio/smallest/npn_006.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 981.68,
+            "p50": 981.68,
+            "p95": 981.68,
+            "min": 981.68,
+            "max": 981.68,
+            "stddev": 0.0,
+            "samples": [
+              981.68
+            ]
+          },
+          "total": {
+            "mean": 1168.97,
+            "p50": 1168.97,
+            "p95": 1168.97,
+            "min": 1168.97,
+            "max": 1168.97,
+            "stddev": 0.0,
+            "samples": [
+              1168.97
+            ]
+          },
+          "audio_path": "audio/sarvam/npn_006.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "ccr_001",
+      "category": "credit_card_otp_readback",
+      "text": "Confirming your card number: 4532 1234 5678 9012, expiry 11/27, CVV 8-4-2.",
+      "expected_behavior": "Digits read in groups of four with brief pauses between groups; CVV digits clearly separated by intonation.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 814.69,
+            "p50": 814.69,
+            "p95": 814.69,
+            "min": 814.69,
+            "max": 814.69,
+            "stddev": 0.0,
+            "samples": [
+              814.69
+            ]
+          },
+          "total": {
+            "mean": 1649.71,
+            "p50": 1649.71,
+            "p95": 1649.71,
+            "min": 1649.71,
+            "max": 1649.71,
+            "stddev": 0.0,
+            "samples": [
+              1649.71
+            ]
+          },
+          "audio_path": "audio/smallest/ccr_001.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 1183.6,
+            "p50": 1183.6,
+            "p95": 1183.6,
+            "min": 1183.6,
+            "max": 1183.6,
+            "stddev": 0.0,
+            "samples": [
+              1183.6
+            ]
+          },
+          "total": {
+            "mean": 1656.1,
+            "p50": 1656.1,
+            "p95": 1656.1,
+            "min": 1656.1,
+            "max": 1656.1,
+            "stddev": 0.0,
+            "samples": [
+              1656.1
+            ]
+          },
+          "audio_path": "audio/sarvam/ccr_001.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "ccr_002",
+      "category": "credit_card_otp_readback",
+      "text": "Your OTP is 8-4-7-2-3-9. Please do not share this with anyone.",
+      "expected_behavior": "Each digit individually pronounced with pause; final security warning in slightly slower cadence.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 337.08,
+            "p50": 337.08,
+            "p95": 337.08,
+            "min": 337.08,
+            "max": 337.08,
+            "stddev": 0.0,
+            "samples": [
+              337.08
+            ]
+          },
+          "total": {
+            "mean": 588.41,
+            "p50": 588.41,
+            "p95": 588.41,
+            "min": 588.41,
+            "max": 588.41,
+            "stddev": 0.0,
+            "samples": [
+              588.41
+            ]
+          },
+          "audio_path": "audio/smallest/ccr_002.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 847.9,
+            "p50": 847.9,
+            "p95": 847.9,
+            "min": 847.9,
+            "max": 847.9,
+            "stddev": 0.0,
+            "samples": [
+              847.9
+            ]
+          },
+          "total": {
+            "mean": 1069.23,
+            "p50": 1069.23,
+            "p95": 1069.23,
+            "min": 1069.23,
+            "max": 1069.23,
+            "stddev": 0.0,
+            "samples": [
+              1069.23
+            ]
+          },
+          "audio_path": "audio/sarvam/ccr_002.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "ccr_003",
+      "category": "credit_card_otp_readback",
+      "text": "Press 1 to confirm transaction of 24,999 rupees, or 2 to decline.",
+      "expected_behavior": "'24,999' read as twenty-four thousand nine hundred ninety-nine; not '24,9-9-9'.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 358.94,
+            "p50": 358.94,
+            "p95": 358.94,
+            "min": 358.94,
+            "max": 358.94,
+            "stddev": 0.0,
+            "samples": [
+              358.94
+            ]
+          },
+          "total": {
+            "mean": 590.06,
+            "p50": 590.06,
+            "p95": 590.06,
+            "min": 590.06,
+            "max": 590.06,
+            "stddev": 0.0,
+            "samples": [
+              590.06
+            ]
+          },
+          "audio_path": "audio/smallest/ccr_003.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 1250.77,
+            "p50": 1250.77,
+            "p95": 1250.77,
+            "min": 1250.77,
+            "max": 1250.77,
+            "stddev": 0.0,
+            "samples": [
+              1250.77
+            ]
+          },
+          "total": {
+            "mean": 2011.27,
+            "p50": 2011.27,
+            "p95": 2011.27,
+            "min": 2011.27,
+            "max": 2011.27,
+            "stddev": 0.0,
+            "samples": [
+              2011.27
+            ]
+          },
+          "audio_path": "audio/sarvam/ccr_003.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "ccr_004",
+      "category": "credit_card_otp_readback",
+      "text": "Your reference number for this complaint is C-R-N slash 2 0 2 6 slash 0 4 5 8 1 2.",
+      "expected_behavior": "Mixed letter-digit-symbol sequence preserved; 'slash' rendered audibly, not silently.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 356.52,
+            "p50": 356.52,
+            "p95": 356.52,
+            "min": 356.52,
+            "max": 356.52,
+            "stddev": 0.0,
+            "samples": [
+              356.52
+            ]
+          },
+          "total": {
+            "mean": 589.11,
+            "p50": 589.11,
+            "p95": 589.11,
+            "min": 589.11,
+            "max": 589.11,
+            "stddev": 0.0,
+            "samples": [
+              589.11
+            ]
+          },
+          "audio_path": "audio/smallest/ccr_004.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 964.73,
+            "p50": 964.73,
+            "p95": 964.73,
+            "min": 964.73,
+            "max": 964.73,
+            "stddev": 0.0,
+            "samples": [
+              964.73
+            ]
+          },
+          "total": {
+            "mean": 1325.24,
+            "p50": 1325.24,
+            "p95": 1325.24,
+            "min": 1325.24,
+            "max": 1325.24,
+            "stddev": 0.0,
+            "samples": [
+              1325.24
+            ]
+          },
+          "audio_path": "audio/sarvam/ccr_004.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "ccr_005",
+      "category": "credit_card_otp_readback",
+      "text": "Account ending 4-3-2-1 has been debited 1,250 rupees, available balance is 87,432 rupees.",
+      "expected_behavior": "Last-four digits read individually; rupee amounts read as whole numbers; clean transition between the two number formats.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 615.89,
+            "p50": 615.89,
+            "p95": 615.89,
+            "min": 615.89,
+            "max": 615.89,
+            "stddev": 0.0,
+            "samples": [
+              615.89
+            ]
+          },
+          "total": {
+            "mean": 1082.39,
+            "p50": 1082.39,
+            "p95": 1082.39,
+            "min": 1082.39,
+            "max": 1082.39,
+            "stddev": 0.0,
+            "samples": [
+              1082.39
+            ]
+          },
+          "audio_path": "audio/smallest/ccr_005.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 1294.26,
+            "p50": 1294.26,
+            "p95": 1294.26,
+            "min": 1294.26,
+            "max": 1294.26,
+            "stddev": 0.0,
+            "samples": [
+              1294.26
+            ]
+          },
+          "total": {
+            "mean": 1904.83,
+            "p50": 1904.83,
+            "p95": 1904.83,
+            "min": 1904.83,
+            "max": 1904.83,
+            "stddev": 0.0,
+            "samples": [
+              1904.83
+            ]
+          },
+          "audio_path": "audio/sarvam/ccr_005.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "ccr_006",
+      "category": "credit_card_otp_readback",
+      "text": "Please dial extension 2-0-7 within the next 30 seconds, otherwise this call will disconnect.",
+      "expected_behavior": "Urgency in cadence on '30 seconds'; extension digits clearly separated.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 317.95,
+            "p50": 317.95,
+            "p95": 317.95,
+            "min": 317.95,
+            "max": 317.95,
+            "stddev": 0.0,
+            "samples": [
+              317.95
+            ]
+          },
+          "total": {
+            "mean": 513.7,
+            "p50": 513.7,
+            "p95": 513.7,
+            "min": 513.7,
+            "max": 513.7,
+            "stddev": 0.0,
+            "samples": [
+              513.7
+            ]
+          },
+          "audio_path": "audio/smallest/ccr_006.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 986.61,
+            "p50": 986.61,
+            "p95": 986.61,
+            "min": 986.61,
+            "max": 986.61,
+            "stddev": 0.0,
+            "samples": [
+              986.61
+            ]
+          },
+          "total": {
+            "mean": 1429.63,
+            "p50": 1429.63,
+            "p95": 1429.63,
+            "min": 1429.63,
+            "max": 1429.63,
+            "stddev": 0.0,
+            "samples": [
+              1429.63
+            ]
+          },
+          "audio_path": "audio/sarvam/ccr_006.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    },
+    {
+      "test_id": "ccr_007",
+      "category": "credit_card_otp_readback",
+      "text": "Transaction declined. Reason code: zero-five. Please contact your bank for assistance.",
+      "expected_behavior": "'Zero-five' as two distinct digits, not 'oh-five' or 'five'. Concise IVR delivery.",
+      "outputs": {
+        "groq": {
+          "ttfb": null,
+          "total": null,
+          "audio_path": null,
+          "audio_format": null,
+          "runs": 1,
+          "errors": 1,
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "is_streaming": true
+        },
+        "smallest": {
+          "ttfb": {
+            "mean": 349.54,
+            "p50": 349.54,
+            "p95": 349.54,
+            "min": 349.54,
+            "max": 349.54,
+            "stddev": 0.0,
+            "samples": [
+              349.54
+            ]
+          },
+          "total": {
+            "mean": 471.41,
+            "p50": 471.41,
+            "p95": 471.41,
+            "min": 471.41,
+            "max": 471.41,
+            "stddev": 0.0,
+            "samples": [
+              471.41
+            ]
+          },
+          "audio_path": "audio/smallest/ccr_007.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": true
+        },
+        "sarvam": {
+          "ttfb": {
+            "mean": 1047.15,
+            "p50": 1047.15,
+            "p95": 1047.15,
+            "min": 1047.15,
+            "max": 1047.15,
+            "stddev": 0.0,
+            "samples": [
+              1047.15
+            ]
+          },
+          "total": {
+            "mean": 1222.86,
+            "p50": 1222.86,
+            "p95": 1222.86,
+            "min": 1222.86,
+            "max": 1222.86,
+            "stddev": 0.0,
+            "samples": [
+              1222.86
+            ]
+          },
+          "audio_path": "audio/sarvam/ccr_007.wav",
+          "audio_format": "wav",
+          "runs": 1,
+          "errors": 0,
+          "last_error": null,
+          "is_streaming": false
+        }
+      }
+    }
+  ]
+}

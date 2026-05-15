@@ -5,7 +5,6 @@ __pycache__/
 node_modules/
 dist/
 dashboard/public/audio/
-dashboard/public/results.json
 .DS_Store
 Thumbs.db
 *.egg-info/

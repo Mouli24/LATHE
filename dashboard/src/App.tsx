@@ -1,96 +1,91 @@
-import { useState, useEffect } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Filters } from "@/components/Filters"
-import { LatencyChart } from "@/components/LatencyChart"
-import { ResultsTable } from "@/components/ResultsTable"
-import { KpiCards } from "@/components/KpiCards"
+import { useState, useEffect, useCallback } from "react"
 import type { RunResults, ProviderName, MetricKey } from "@/lib/types"
 import { ALL_PROVIDERS } from "@/lib/constants"
+import { Sidebar } from "@/components/Sidebar"
+import { Topbar } from "@/components/Topbar"
+import { PageHeader } from "@/components/PageHeader"
+import { HeroCards } from "@/components/HeroCards"
+import { FeaturedCard } from "@/components/FeaturedCard"
+import { ActiveBenchPanel } from "@/components/ActiveBenchPanel"
+import { UtterancePeek } from "@/components/UtterancePeek"
+import { ProvidersView } from "@/components/ProvidersView"
+import { CategoriesView } from "@/components/CategoriesView"
+import { LatencyCalculatorView } from "@/components/LatencyCalculatorView"
+import { DataApiView } from "@/components/DataApiView"
+import { LiquidBenchView } from "@/components/LiquidBenchView"
 
-const THEME_KEY = "lathe.theme"
-
-function applyTheme(theme: "light" | "dark") {
-  const root = document.documentElement
-  if (theme === "dark") root.classList.add("dark")
-  else root.classList.remove("dark")
+function computeP50Map(data: RunResults): Record<string, number> {
+  const map: Record<string, number> = {}
+  for (const p of data.providers) {
+    const vals = data.results
+      .map((r) => r.outputs[p]?.ttfb?.p50)
+      .filter((v): v is number => v != null && v > 0)
+    if (vals.length > 0) {
+      map[p] = Math.round(vals.reduce((a, b) => a + b, 0) / vals.length)
+    }
+  }
+  return map
 }
 
 export default function App() {
   const [data, setData] = useState<RunResults | null>(null)
   const [error, setError] = useState<string | null>(null)
-  const [selectedCategory, setSelectedCategory] = useState("all")
-  const [activeProviders, setActiveProviders] = useState<ProviderName[]>(ALL_PROVIDERS)
+  const [refreshing, setRefreshing] = useState(false)
+  const [activeTab, setActiveTab] = useState("dash")
+  const [mode, setMode] = useState("Streaming")
   const [metric, setMetric] = useState<MetricKey>("p50")
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
-    if (typeof window === "undefined") return "light"
-    const saved = localStorage.getItem(THEME_KEY)
-    if (saved === "dark" || saved === "light") return saved
-    return window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-  })
+  const [selectedCategory, setSelectedCategory] = useState("all")
+  const [streamingFilter, setStreamingFilter] = useState<"all" | "streaming" | "non-streaming">("all")
+  const [searchQuery, setSearchQuery] = useState("")
+  const [activeProviders, setActiveProviders] = useState<ProviderName[]>([])
 
+  // Always dark — add class so Tailwind dark: variants work in legacy components
   useEffect(() => {
-    applyTheme(theme)
-    try {
-      localStorage.setItem(THEME_KEY, theme)
-    } catch {
-      // ignore
-    }
-  }, [theme])
-
-  useEffect(() => {
-    fetch("/results.json")
-      .then((r) => {
-        if (!r.ok) throw new Error(`Failed to load results.json: ${r.status}`)
-        return r.json()
-      })
-      .then((d: RunResults) => {
-        setData(d)
-        const avail = d.providers.filter((p): p is ProviderName =>
-          (ALL_PROVIDERS as string[]).includes(p)
-        )
-        setActiveProviders(avail.length > 0 ? avail : ALL_PROVIDERS)
-      })
-      .catch((e: unknown) => setError(e instanceof Error ? e.message : String(e)))
+    document.documentElement.classList.add("dark")
   }, [])
 
-  if (error) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-background text-foreground">
-        <p className="text-destructive">{error}</p>
-      </div>
-    )
+  async function loadData() {
+    setRefreshing(true)
+    try {
+      const r = await fetch("/results.json")
+      if (!r.ok) throw new Error(`Failed to load results.json: ${r.status}`)
+      const d: RunResults = await r.json()
+      setData(d)
+      const avail = d.providers.filter((p): p is ProviderName =>
+        (ALL_PROVIDERS as string[]).includes(p)
+      )
+      setActiveProviders(avail.length > 0 ? avail : (ALL_PROVIDERS as ProviderName[]))
+      setError(null)
+    } catch (e: unknown) {
+      setError(e instanceof Error ? e.message : String(e))
+    } finally {
+      setRefreshing(false)
+    }
   }
 
-  if (!data) {
-    return (
-      <div className="mx-auto max-w-7xl px-4 py-8 space-y-6">
-        <div className="space-y-2">
-          <div className="h-7 w-32 rounded bg-muted animate-pulse" />
-          <div className="h-4 w-80 rounded bg-muted animate-pulse" />
-        </div>
-        <div className="h-32 rounded-lg bg-muted animate-pulse" />
-        <div className="h-72 rounded-lg bg-muted animate-pulse" />
-      </div>
-    )
+  useEffect(() => {
+    loadData()
+  }, [])
+
+  function refreshData() {
+    loadData()
   }
-
-  const categories = [...new Set(data.results.map((r) => r.category))].sort()
-  const availableProviders = data.providers.filter((p): p is ProviderName =>
-    (ALL_PROVIDERS as string[]).includes(p)
-  )
-
-  const filtered = data.results.filter(
-    (r) => selectedCategory === "all" || r.category === selectedCategory
-  )
 
   function toggleProvider(p: ProviderName) {
     setActiveProviders((prev) =>
-      prev.includes(p) ? (prev.length > 1 ? prev.filter((x) => x !== p) : prev) : [...prev, p]
+      prev.includes(p)
+        ? prev.length > 1
+          ? prev.filter((x) => x !== p)
+          : prev
+        : [...prev, p]
     )
   }
 
-  function exportCsv() {
+  const exportCsv = useCallback(() => {
+    if (!data) return
+    const filtered = data.results.filter(
+      (r) => selectedCategory === "all" || r.category === selectedCategory
+    )
     const header = [
       "test_id",
       "category",
@@ -128,74 +123,155 @@ export default function App() {
     const url = URL.createObjectURL(blob)
     const a = document.createElement("a")
     a.href = url
-    a.download = `lathe-${data!.run_id}.csv`
+    a.download = `lathe-${data.run_id}.csv`
     a.click()
     URL.revokeObjectURL(url)
+  }, [data, activeProviders, selectedCategory])
+
+  const p50Map = data ? computeP50Map(data) : {}
+  const availableProviders = data
+    ? data.providers.filter((p): p is ProviderName => (ALL_PROVIDERS as string[]).includes(p))
+    : (ALL_PROVIDERS as ProviderName[])
+  const categories = data ? [...new Set(data.results.map((r) => r.category))].sort() : []
+
+  // Layer 1: category filter
+  const categoryFiltered = data
+    ? data.results.filter((r) => selectedCategory === "all" || r.category === selectedCategory)
+    : []
+
+  // Layer 2: streaming filter
+  const streamingFiltered = categoryFiltered.filter((r) => {
+    if (streamingFilter === "all") return true
+    const hasStreaming = activeProviders.some((p) => r.outputs[p]?.is_streaming === true)
+    if (streamingFilter === "streaming") return hasStreaming
+    return !hasStreaming
+  })
+
+  // Layer 3: search filter
+  const searchLower = searchQuery.toLowerCase().trim()
+  const filteredResults = searchLower
+    ? streamingFiltered.filter(
+        (r) =>
+          r.text.toLowerCase().includes(searchLower) ||
+          r.test_id.toLowerCase().includes(searchLower)
+      )
+    : streamingFiltered
+
+  const filteredData: RunResults | null = data ? { ...data, results: filteredResults } : null
+
+  if (error) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          minHeight: "100vh",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          gap: 12,
+          background: "var(--bg-0)",
+          color: "var(--ink)",
+        }}
+      >
+        <div
+          style={{
+            padding: "16px 24px",
+            borderRadius: 12,
+            background: "rgba(248,113,113,0.10)",
+            border: "1px solid rgba(248,113,113,0.30)",
+            color: "#fca5a5",
+            fontSize: 14,
+            maxWidth: 480,
+            textAlign: "center",
+          }}
+        >
+          {error}
+        </div>
+        <p style={{ fontSize: 12, color: "var(--ink-faint)" }}>
+          Place a results.json file in the public/ directory to load benchmark data.
+        </p>
+      </div>
+    )
   }
 
-  const runDate = new Date(data.generated_at).toLocaleString()
-
   return (
-    <div className="mx-auto max-w-7xl px-4 py-8 space-y-6 text-foreground">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold tracking-tight">LATHE</h1>
-          <p className="text-muted-foreground text-sm">
-            Latency-Aware Test Harness for Voice AI · Indian-language benchmark
-          </p>
-          <p className="text-xs text-muted-foreground mt-1">
-            Run {data.run_id} · {runDate} · {data.results.length} utterances
-            {data.runs_per_cell ? ` · n=${data.runs_per_cell} per cell` : ""}
-          </p>
-          {data.skipped_providers && data.skipped_providers.length > 0 && (
-            <p className="text-xs text-muted-foreground mt-1">
-              Skipped: {data.skipped_providers.join(", ")} (missing API keys)
-            </p>
-          )}
-        </div>
-        <div className="flex items-center gap-2 shrink-0">
-          <button
-            type="button"
-            onClick={exportCsv}
-            className="inline-flex items-center rounded-md border border-input bg-transparent px-3 py-1.5 text-sm font-medium hover:bg-accent transition-colors"
-          >
-            Export CSV
-          </button>
-          <button
-            type="button"
-            onClick={() => setTheme((t) => (t === "dark" ? "light" : "dark"))}
-            className="inline-flex items-center rounded-md border border-input bg-transparent px-3 py-1.5 text-sm font-medium hover:bg-accent transition-colors"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? "Light" : "Dark"}
-          </button>
-        </div>
-      </div>
-
-      <KpiCards results={filtered} activeProviders={activeProviders} metric={metric} />
-
-      <Card>
-        <CardHeader className="pb-2 flex flex-row items-center justify-between">
-          <CardTitle className="text-base">TTFB by Category</CardTitle>
-          <Badge variant="secondary">{metric.toUpperCase()}</Badge>
-        </CardHeader>
-        <CardContent>
-          <LatencyChart results={filtered} activeProviders={activeProviders} metric={metric} />
-        </CardContent>
-      </Card>
-
-      <Filters
-        categories={categories}
-        selectedCategory={selectedCategory}
-        onCategoryChange={setSelectedCategory}
-        activeProviders={activeProviders}
-        onProviderToggle={toggleProvider}
-        availableProviders={availableProviders}
-        metric={metric}
-        onMetricChange={setMetric}
+    <div
+      className="flex min-h-screen"
+      style={{
+        background: "var(--bg-0)",
+        color: "var(--ink)",
+        fontFamily: "'Geist', ui-sans-serif, system-ui, sans-serif",
+      }}
+    >
+      <Sidebar
+        activeTab={activeTab}
+        mode={mode}
+        onTabChange={setActiveTab}
+        onModeChange={setMode}
+        providers={availableProviders}
+        p50Map={p50Map}
       />
-
-      <ResultsTable results={filtered} activeProviders={activeProviders} metric={metric} />
+      <main className="flex-1 min-w-0 overflow-x-hidden">
+        <Topbar
+          runId={data?.run_id}
+          onRefresh={refreshData}
+          refreshing={refreshing}
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          data={data}
+        />
+        {activeTab === "dash" && (
+          <>
+            <PageHeader
+              totalProviders={availableProviders.length || 3}
+              categories={categories}
+              selectedCategory={selectedCategory}
+              onCategoryChange={setSelectedCategory}
+              activeProviders={activeProviders}
+              availableProviders={availableProviders}
+              onProviderToggle={toggleProvider}
+              metric={metric}
+              onMetricChange={setMetric}
+              streamingFilter={streamingFilter}
+              onStreamingFilterChange={setStreamingFilter}
+            />
+            <div className="px-7 lg:px-9 pb-10">
+              <div className="grid grid-cols-12 gap-4" style={{ marginTop: "1.25rem" }}>
+                <div className="col-span-12 xl:col-span-9">
+                  <HeroCards data={filteredData} activeProviders={activeProviders} metric={metric} />
+                </div>
+                <div className="col-span-12 xl:col-span-3">
+                  <FeaturedCard />
+                </div>
+              </div>
+              <ActiveBenchPanel
+                data={filteredData}
+                metric={metric}
+                activeProviders={activeProviders}
+                onExportCsv={exportCsv}
+              />
+              <UtterancePeek
+                data={filteredData}
+                activeProviders={activeProviders}
+                metric={metric}
+              />
+            </div>
+          </>
+        )}
+        {activeTab === "providers" && (
+          <ProvidersView data={filteredData} activeProviders={activeProviders} metric={metric} />
+        )}
+        {activeTab === "categories" && (
+          <CategoriesView data={filteredData} activeProviders={activeProviders} metric={metric} />
+        )}
+        {activeTab === "latency" && (
+          <LatencyCalculatorView data={data} activeProviders={activeProviders} />
+        )}
+        {activeTab === "api" && <DataApiView data={data} />}
+        {activeTab === "liquid" && (
+          <LiquidBenchView data={data} activeProviders={activeProviders} />
+        )}
+      </main>
     </div>
   )
 }
