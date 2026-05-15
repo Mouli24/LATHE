@@ -1,7 +1,116 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Badge } from "@/components/ui/badge"
 import type { TestResult, ProviderName, MetricKey } from "@/lib/types"
-import { PROVIDER_LABELS, CATEGORY_COLORS, categoryLabel } from "@/lib/constants"
+import { PROVIDER_LABELS, PROVIDER_COLORS, CATEGORY_COLORS, categoryLabel } from "@/lib/constants"
+
+function MiniAudioPlayer({ audioPath, accent }: { audioPath: string; accent: string }) {
+  const [playing, setPlaying] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const [errored, setErrored] = useState(false)
+  const audioRef = useRef<HTMLAudioElement>(null)
+
+  useEffect(() => {
+    setPlaying(false)
+    setProgress(0)
+    setErrored(false)
+  }, [audioPath])
+
+  function toggle() {
+    const a = audioRef.current
+    if (!a || errored) return
+    if (playing) {
+      a.pause()
+      setPlaying(false)
+    } else {
+      a.play().catch(() => { setErrored(true); setPlaying(false) })
+      setPlaying(true)
+    }
+  }
+
+  if (errored) {
+    return (
+      <span style={{ fontSize: 10.5, color: "#fca5a5" }}>unavailable</span>
+    )
+  }
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 7 }}>
+        {/* Play / Pause button */}
+        <button
+          type="button"
+          onClick={toggle}
+          style={{
+            width: 26,
+            height: 26,
+            borderRadius: "50%",
+            background: accent + "22",
+            border: `1px solid ${accent}55`,
+            color: accent,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            flexShrink: 0,
+          }}
+        >
+          {playing ? (
+            <svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor">
+              <rect x="6" y="5" width="4" height="14" rx="1"/>
+              <rect x="14" y="5" width="4" height="14" rx="1"/>
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor">
+              <path d="M6 4.5v15l13-7.5z"/>
+            </svg>
+          )}
+        </button>
+
+        {/* Inline progress bar */}
+        <div
+          style={{
+            flex: 1,
+            height: 3,
+            borderRadius: 2,
+            background: "rgba(255,255,255,0.1)",
+            overflow: "hidden",
+            minWidth: 60,
+            cursor: "pointer",
+          }}
+          onClick={(e) => {
+            const a = audioRef.current
+            if (!a || !a.duration) return
+            const rect = e.currentTarget.getBoundingClientRect()
+            a.currentTime = ((e.clientX - rect.left) / rect.width) * a.duration
+          }}
+        >
+          <div
+            style={{
+              height: "100%",
+              width: `${progress * 100}%`,
+              background: accent,
+              borderRadius: 2,
+              transition: "width 0.1s linear",
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Hidden audio element */}
+      <audio
+        ref={audioRef}
+        src={`/${audioPath}`}
+        preload="metadata"
+        onTimeUpdate={() => {
+          const a = audioRef.current
+          if (a && a.duration > 0) setProgress(a.currentTime / a.duration)
+        }}
+        onEnded={() => { setPlaying(false); setProgress(0) }}
+        onError={() => { setErrored(true); setPlaying(false) }}
+      />
+    </div>
+  )
+}
 
 function ttfbVariant(ms: number | null | undefined): "green" | "yellow" | "red" | "gray" {
   if (ms === null || ms === undefined) return "gray"
@@ -114,10 +223,9 @@ export function ResultsTable({ results, activeProviders, metric, baselineProvide
                   <td key={p} className="px-4 py-3 align-top">
                     <div className="flex flex-col gap-2">
                       {out.audio_path && (
-                        <audio
-                          controls
-                          src={`/${out.audio_path}`}
-                          className="h-10 w-full min-w-[200px]"
+                        <MiniAudioPlayer
+                          audioPath={out.audio_path}
+                          accent={PROVIDER_COLORS[p] ?? "#a78bfa"}
                         />
                       )}
                       <div className="flex flex-wrap gap-1">

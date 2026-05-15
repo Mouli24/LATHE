@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "run_id": "2026-05-14T20-47-34Z",
-  "generated_at": "2026-05-14T20:47:34.406802+00:00",
+  "run_id": "2026-05-15T18-09-05Z",
+  "generated_at": "2026-05-15T18:17:25.587516+00:00",
   "runs_per_cell": 1,
   "providers": [
     "groq",
@@ -23,30 +23,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 687.62,
-            "p50": 687.62,
-            "p95": 687.62,
-            "min": 687.62,
-            "max": 687.62,
+            "mean": 752.32,
+            "p50": 752.32,
+            "p95": 752.32,
+            "min": 752.32,
+            "max": 752.32,
             "stddev": 0.0,
             "samples": [
-              687.62
+              752.32
             ]
           },
           "total": {
-            "mean": 842.42,
-            "p50": 842.42,
-            "p95": 842.42,
-            "min": 842.42,
-            "max": 842.42,
+            "mean": 1028.39,
+            "p50": 1028.39,
+            "p95": 1028.39,
+            "min": 1028.39,
+            "max": 1028.39,
             "stddev": 0.0,
             "samples": [
-              842.42
+              1028.39
             ]
           },
           "audio_path": "audio/smallest/hng_001.wav",
@@ -58,25 +58,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 800.16,
-            "p50": 800.16,
-            "p95": 800.16,
-            "min": 800.16,
-            "max": 800.16,
+            "mean": 3024.33,
+            "p50": 3024.33,
+            "p95": 3024.33,
+            "min": 3024.33,
+            "max": 3024.33,
             "stddev": 0.0,
             "samples": [
-              800.16
+              3024.33
             ]
           },
           "total": {
-            "mean": 986.44,
-            "p50": 986.44,
-            "p95": 986.44,
-            "min": 986.44,
-            "max": 986.44,
+            "mean": 3208.99,
+            "p50": 3208.99,
+            "p95": 3208.99,
+            "min": 3208.99,
+            "max": 3208.99,
             "stddev": 0.0,
             "samples": [
-              986.44
+              3208.99
             ]
           },
           "audio_path": "audio/sarvam/hng_001.wav",
@@ -101,30 +101,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 811.82,
-            "p50": 811.82,
-            "p95": 811.82,
-            "min": 811.82,
-            "max": 811.82,
+            "mean": 507.06,
+            "p50": 507.06,
+            "p95": 507.06,
+            "min": 507.06,
+            "max": 507.06,
             "stddev": 0.0,
             "samples": [
-              811.82
+              507.06
             ]
           },
           "total": {
-            "mean": 1114.17,
-            "p50": 1114.17,
-            "p95": 1114.17,
-            "min": 1114.17,
-            "max": 1114.17,
+            "mean": 599.18,
+            "p50": 599.18,
+            "p95": 599.18,
+            "min": 599.18,
+            "max": 599.18,
             "stddev": 0.0,
             "samples": [
-              1114.17
+              599.18
             ]
           },
           "audio_path": "audio/smallest/hng_002.wav",
@@ -136,25 +136,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 1905.1,
-            "p50": 1905.1,
-            "p95": 1905.1,
-            "min": 1905.1,
-            "max": 1905.1,
+            "mean": 2840.63,
+            "p50": 2840.63,
+            "p95": 2840.63,
+            "min": 2840.63,
+            "max": 2840.63,
             "stddev": 0.0,
             "samples": [
-              1905.1
+              2840.63
             ]
           },
           "total": {
-            "mean": 2040.87,
-            "p50": 2040.87,
-            "p95": 2040.87,
-            "min": 2040.87,
-            "max": 2040.87,
+            "mean": 3028.79,
+            "p50": 3028.79,
+            "p95": 3028.79,
+            "min": 3028.79,
+            "max": 3028.79,
             "stddev": 0.0,
             "samples": [
-              2040.87
+              3028.79
             ]
           },
           "audio_path": "audio/sarvam/hng_002.wav",
@@ -179,30 +179,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 309.8,
-            "p50": 309.8,
-            "p95": 309.8,
-            "min": 309.8,
-            "max": 309.8,
+            "mean": 368.03,
+            "p50": 368.03,
+            "p95": 368.03,
+            "min": 368.03,
+            "max": 368.03,
             "stddev": 0.0,
             "samples": [
-              309.8
+              368.03
             ]
           },
           "total": {
-            "mean": 350.45,
-            "p50": 350.45,
-            "p95": 350.45,
-            "min": 350.45,
-            "max": 350.45,
+            "mean": 707.95,
+            "p50": 707.95,
+            "p95": 707.95,
+            "min": 707.95,
+            "max": 707.95,
             "stddev": 0.0,
             "samples": [
-              350.45
+              707.95
             ]
           },
           "audio_path": "audio/smallest/hng_003.wav",
@@ -214,25 +214,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 562.46,
-            "p50": 562.46,
-            "p95": 562.46,
-            "min": 562.46,
-            "max": 562.46,
+            "mean": 988.62,
+            "p50": 988.62,
+            "p95": 988.62,
+            "min": 988.62,
+            "max": 988.62,
             "stddev": 0.0,
             "samples": [
-              562.46
+              988.62
             ]
           },
           "total": {
-            "mean": 645.26,
-            "p50": 645.26,
-            "p95": 645.26,
-            "min": 645.26,
-            "max": 645.26,
+            "mean": 1486.62,
+            "p50": 1486.62,
+            "p95": 1486.62,
+            "min": 1486.62,
+            "max": 1486.62,
             "stddev": 0.0,
             "samples": [
-              645.26
+              1486.62
             ]
           },
           "audio_path": "audio/sarvam/hng_003.wav",
@@ -257,30 +257,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 355.03,
-            "p50": 355.03,
-            "p95": 355.03,
-            "min": 355.03,
-            "max": 355.03,
+            "mean": 395.88,
+            "p50": 395.88,
+            "p95": 395.88,
+            "min": 395.88,
+            "max": 395.88,
             "stddev": 0.0,
             "samples": [
-              355.03
+              395.88
             ]
           },
           "total": {
-            "mean": 465.03,
-            "p50": 465.03,
-            "p95": 465.03,
-            "min": 465.03,
-            "max": 465.03,
+            "mean": 1148.55,
+            "p50": 1148.55,
+            "p95": 1148.55,
+            "min": 1148.55,
+            "max": 1148.55,
             "stddev": 0.0,
             "samples": [
-              465.03
+              1148.55
             ]
           },
           "audio_path": "audio/smallest/hng_004.wav",
@@ -292,25 +292,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 951.43,
-            "p50": 951.43,
-            "p95": 951.43,
-            "min": 951.43,
-            "max": 951.43,
+            "mean": 996.29,
+            "p50": 996.29,
+            "p95": 996.29,
+            "min": 996.29,
+            "max": 996.29,
             "stddev": 0.0,
             "samples": [
-              951.43
+              996.29
             ]
           },
           "total": {
-            "mean": 1359.14,
-            "p50": 1359.14,
-            "p95": 1359.14,
-            "min": 1359.14,
-            "max": 1359.14,
+            "mean": 1142.23,
+            "p50": 1142.23,
+            "p95": 1142.23,
+            "min": 1142.23,
+            "max": 1142.23,
             "stddev": 0.0,
             "samples": [
-              1359.14
+              1142.23
             ]
           },
           "audio_path": "audio/sarvam/hng_004.wav",
@@ -335,30 +335,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 350.63,
-            "p50": 350.63,
-            "p95": 350.63,
-            "min": 350.63,
-            "max": 350.63,
+            "mean": 376.98,
+            "p50": 376.98,
+            "p95": 376.98,
+            "min": 376.98,
+            "max": 376.98,
             "stddev": 0.0,
             "samples": [
-              350.63
+              376.98
             ]
           },
           "total": {
-            "mean": 510.23,
-            "p50": 510.23,
-            "p95": 510.23,
-            "min": 510.23,
-            "max": 510.23,
+            "mean": 704.86,
+            "p50": 704.86,
+            "p95": 704.86,
+            "min": 704.86,
+            "max": 704.86,
             "stddev": 0.0,
             "samples": [
-              510.23
+              704.86
             ]
           },
           "audio_path": "audio/smallest/hng_005.wav",
@@ -370,25 +370,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 808.76,
-            "p50": 808.76,
-            "p95": 808.76,
-            "min": 808.76,
-            "max": 808.76,
+            "mean": 807.75,
+            "p50": 807.75,
+            "p95": 807.75,
+            "min": 807.75,
+            "max": 807.75,
             "stddev": 0.0,
             "samples": [
-              808.76
+              807.75
             ]
           },
           "total": {
-            "mean": 959.83,
-            "p50": 959.83,
-            "p95": 959.83,
-            "min": 959.83,
-            "max": 959.83,
+            "mean": 956.8,
+            "p50": 956.8,
+            "p95": 956.8,
+            "min": 956.8,
+            "max": 956.8,
             "stddev": 0.0,
             "samples": [
-              959.83
+              956.8
             ]
           },
           "audio_path": "audio/sarvam/hng_005.wav",
@@ -413,30 +413,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 297.15,
-            "p50": 297.15,
-            "p95": 297.15,
-            "min": 297.15,
-            "max": 297.15,
+            "mean": 605.71,
+            "p50": 605.71,
+            "p95": 605.71,
+            "min": 605.71,
+            "max": 605.71,
             "stddev": 0.0,
             "samples": [
-              297.15
+              605.71
             ]
           },
           "total": {
-            "mean": 356.55,
-            "p50": 356.55,
-            "p95": 356.55,
-            "min": 356.55,
-            "max": 356.55,
+            "mean": 1282.37,
+            "p50": 1282.37,
+            "p95": 1282.37,
+            "min": 1282.37,
+            "max": 1282.37,
             "stddev": 0.0,
             "samples": [
-              356.55
+              1282.37
             ]
           },
           "audio_path": "audio/smallest/hng_006.wav",
@@ -448,25 +448,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 948.54,
-            "p50": 948.54,
-            "p95": 948.54,
-            "min": 948.54,
-            "max": 948.54,
+            "mean": 830.33,
+            "p50": 830.33,
+            "p95": 830.33,
+            "min": 830.33,
+            "max": 830.33,
             "stddev": 0.0,
             "samples": [
-              948.54
+              830.33
             ]
           },
           "total": {
-            "mean": 1031.63,
-            "p50": 1031.63,
-            "p95": 1031.63,
-            "min": 1031.63,
-            "max": 1031.63,
+            "mean": 951.54,
+            "p50": 951.54,
+            "p95": 951.54,
+            "min": 951.54,
+            "max": 951.54,
             "stddev": 0.0,
             "samples": [
-              1031.63
+              951.54
             ]
           },
           "audio_path": "audio/sarvam/hng_006.wav",
@@ -491,30 +491,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 349.65,
-            "p50": 349.65,
-            "p95": 349.65,
-            "min": 349.65,
-            "max": 349.65,
+            "mean": 388.83,
+            "p50": 388.83,
+            "p95": 388.83,
+            "min": 388.83,
+            "max": 388.83,
             "stddev": 0.0,
             "samples": [
-              349.65
+              388.83
             ]
           },
           "total": {
-            "mean": 428.92,
-            "p50": 428.92,
-            "p95": 428.92,
-            "min": 428.92,
-            "max": 428.92,
+            "mean": 473.41,
+            "p50": 473.41,
+            "p95": 473.41,
+            "min": 473.41,
+            "max": 473.41,
             "stddev": 0.0,
             "samples": [
-              428.92
+              473.41
             ]
           },
           "audio_path": "audio/smallest/hng_007.wav",
@@ -526,25 +526,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 817.23,
-            "p50": 817.23,
-            "p95": 817.23,
-            "min": 817.23,
-            "max": 817.23,
+            "mean": 667.33,
+            "p50": 667.33,
+            "p95": 667.33,
+            "min": 667.33,
+            "max": 667.33,
             "stddev": 0.0,
             "samples": [
-              817.23
+              667.33
             ]
           },
           "total": {
-            "mean": 900.97,
-            "p50": 900.97,
-            "p95": 900.97,
-            "min": 900.97,
-            "max": 900.97,
+            "mean": 1031.62,
+            "p50": 1031.62,
+            "p95": 1031.62,
+            "min": 1031.62,
+            "max": 1031.62,
             "stddev": 0.0,
             "samples": [
-              900.97
+              1031.62
             ]
           },
           "audio_path": "audio/sarvam/hng_007.wav",
@@ -569,30 +569,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 355.75,
-            "p50": 355.75,
-            "p95": 355.75,
-            "min": 355.75,
-            "max": 355.75,
+            "mean": 449.74,
+            "p50": 449.74,
+            "p95": 449.74,
+            "min": 449.74,
+            "max": 449.74,
             "stddev": 0.0,
             "samples": [
-              355.75
+              449.74
             ]
           },
           "total": {
-            "mean": 479.78,
-            "p50": 479.78,
-            "p95": 479.78,
-            "min": 479.78,
-            "max": 479.78,
+            "mean": 1014.46,
+            "p50": 1014.46,
+            "p95": 1014.46,
+            "min": 1014.46,
+            "max": 1014.46,
             "stddev": 0.0,
             "samples": [
-              479.78
+              1014.46
             ]
           },
           "audio_path": "audio/smallest/npn_001.wav",
@@ -604,25 +604,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 1138.17,
-            "p50": 1138.17,
-            "p95": 1138.17,
-            "min": 1138.17,
-            "max": 1138.17,
+            "mean": 1062.52,
+            "p50": 1062.52,
+            "p95": 1062.52,
+            "min": 1062.52,
+            "max": 1062.52,
             "stddev": 0.0,
             "samples": [
-              1138.17
+              1062.52
             ]
           },
           "total": {
-            "mean": 1291.88,
-            "p50": 1291.88,
-            "p95": 1291.88,
-            "min": 1291.88,
-            "max": 1291.88,
+            "mean": 1416.34,
+            "p50": 1416.34,
+            "p95": 1416.34,
+            "min": 1416.34,
+            "max": 1416.34,
             "stddev": 0.0,
             "samples": [
-              1291.88
+              1416.34
             ]
           },
           "audio_path": "audio/sarvam/npn_001.wav",
@@ -647,30 +647,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 421.19,
-            "p50": 421.19,
-            "p95": 421.19,
-            "min": 421.19,
-            "max": 421.19,
+            "mean": 388.01,
+            "p50": 388.01,
+            "p95": 388.01,
+            "min": 388.01,
+            "max": 388.01,
             "stddev": 0.0,
             "samples": [
-              421.19
+              388.01
             ]
           },
           "total": {
-            "mean": 509.38,
-            "p50": 509.38,
-            "p95": 509.38,
-            "min": 509.38,
-            "max": 509.38,
+            "mean": 742.92,
+            "p50": 742.92,
+            "p95": 742.92,
+            "min": 742.92,
+            "max": 742.92,
             "stddev": 0.0,
             "samples": [
-              509.38
+              742.92
             ]
           },
           "audio_path": "audio/smallest/npn_002.wav",
@@ -682,25 +682,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 935.85,
-            "p50": 935.85,
-            "p95": 935.85,
-            "min": 935.85,
-            "max": 935.85,
+            "mean": 931.95,
+            "p50": 931.95,
+            "p95": 931.95,
+            "min": 931.95,
+            "max": 931.95,
             "stddev": 0.0,
             "samples": [
-              935.85
+              931.95
             ]
           },
           "total": {
-            "mean": 1053.3,
-            "p50": 1053.3,
-            "p95": 1053.3,
-            "min": 1053.3,
-            "max": 1053.3,
+            "mean": 1206.92,
+            "p50": 1206.92,
+            "p95": 1206.92,
+            "min": 1206.92,
+            "max": 1206.92,
             "stddev": 0.0,
             "samples": [
-              1053.3
+              1206.92
             ]
           },
           "audio_path": "audio/sarvam/npn_002.wav",
@@ -725,30 +725,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 474.14,
-            "p50": 474.14,
-            "p95": 474.14,
-            "min": 474.14,
-            "max": 474.14,
+            "mean": 524.29,
+            "p50": 524.29,
+            "p95": 524.29,
+            "min": 524.29,
+            "max": 524.29,
             "stddev": 0.0,
             "samples": [
-              474.14
+              524.29
             ]
           },
           "total": {
-            "mean": 604.38,
-            "p50": 604.38,
-            "p95": 604.38,
-            "min": 604.38,
-            "max": 604.38,
+            "mean": 1014.93,
+            "p50": 1014.93,
+            "p95": 1014.93,
+            "min": 1014.93,
+            "max": 1014.93,
             "stddev": 0.0,
             "samples": [
-              604.38
+              1014.93
             ]
           },
           "audio_path": "audio/smallest/npn_003.wav",
@@ -760,25 +760,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 6598.7,
-            "p50": 6598.7,
-            "p95": 6598.7,
-            "min": 6598.7,
-            "max": 6598.7,
+            "mean": 1089.92,
+            "p50": 1089.92,
+            "p95": 1089.92,
+            "min": 1089.92,
+            "max": 1089.92,
             "stddev": 0.0,
             "samples": [
-              6598.7
+              1089.92
             ]
           },
           "total": {
-            "mean": 6916.28,
-            "p50": 6916.28,
-            "p95": 6916.28,
-            "min": 6916.28,
-            "max": 6916.28,
+            "mean": 1360.18,
+            "p50": 1360.18,
+            "p95": 1360.18,
+            "min": 1360.18,
+            "max": 1360.18,
             "stddev": 0.0,
             "samples": [
-              6916.28
+              1360.18
             ]
           },
           "audio_path": "audio/sarvam/npn_003.wav",
@@ -803,30 +803,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 342.12,
-            "p50": 342.12,
-            "p95": 342.12,
-            "min": 342.12,
-            "max": 342.12,
+            "mean": 399.72,
+            "p50": 399.72,
+            "p95": 399.72,
+            "min": 399.72,
+            "max": 399.72,
             "stddev": 0.0,
             "samples": [
-              342.12
+              399.72
             ]
           },
           "total": {
-            "mean": 472.37,
-            "p50": 472.37,
-            "p95": 472.37,
-            "min": 472.37,
-            "max": 472.37,
+            "mean": 730.93,
+            "p50": 730.93,
+            "p95": 730.93,
+            "min": 730.93,
+            "max": 730.93,
             "stddev": 0.0,
             "samples": [
-              472.37
+              730.93
             ]
           },
           "audio_path": "audio/smallest/npn_004.wav",
@@ -838,25 +838,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 1052.95,
-            "p50": 1052.95,
-            "p95": 1052.95,
-            "min": 1052.95,
-            "max": 1052.95,
+            "mean": 1198.99,
+            "p50": 1198.99,
+            "p95": 1198.99,
+            "min": 1198.99,
+            "max": 1198.99,
             "stddev": 0.0,
             "samples": [
-              1052.95
+              1198.99
             ]
           },
           "total": {
-            "mean": 1325.72,
-            "p50": 1325.72,
-            "p95": 1325.72,
-            "min": 1325.72,
-            "max": 1325.72,
+            "mean": 1545.97,
+            "p50": 1545.97,
+            "p95": 1545.97,
+            "min": 1545.97,
+            "max": 1545.97,
             "stddev": 0.0,
             "samples": [
-              1325.72
+              1545.97
             ]
           },
           "audio_path": "audio/sarvam/npn_004.wav",
@@ -881,30 +881,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 410.95,
-            "p50": 410.95,
-            "p95": 410.95,
-            "min": 410.95,
-            "max": 410.95,
+            "mean": 332.2,
+            "p50": 332.2,
+            "p95": 332.2,
+            "min": 332.2,
+            "max": 332.2,
             "stddev": 0.0,
             "samples": [
-              410.95
+              332.2
             ]
           },
           "total": {
-            "mean": 488.57,
-            "p50": 488.57,
-            "p95": 488.57,
-            "min": 488.57,
-            "max": 488.57,
+            "mean": 575.86,
+            "p50": 575.86,
+            "p95": 575.86,
+            "min": 575.86,
+            "max": 575.86,
             "stddev": 0.0,
             "samples": [
-              488.57
+              575.86
             ]
           },
           "audio_path": "audio/smallest/npn_005.wav",
@@ -916,25 +916,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 966.3,
-            "p50": 966.3,
-            "p95": 966.3,
-            "min": 966.3,
-            "max": 966.3,
+            "mean": 882.04,
+            "p50": 882.04,
+            "p95": 882.04,
+            "min": 882.04,
+            "max": 882.04,
             "stddev": 0.0,
             "samples": [
-              966.3
+              882.04
             ]
           },
           "total": {
-            "mean": 1119.23,
-            "p50": 1119.23,
-            "p95": 1119.23,
-            "min": 1119.23,
-            "max": 1119.23,
+            "mean": 1139.37,
+            "p50": 1139.37,
+            "p95": 1139.37,
+            "min": 1139.37,
+            "max": 1139.37,
             "stddev": 0.0,
             "samples": [
-              1119.23
+              1139.37
             ]
           },
           "audio_path": "audio/sarvam/npn_005.wav",
@@ -959,30 +959,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 355.1,
-            "p50": 355.1,
-            "p95": 355.1,
-            "min": 355.1,
-            "max": 355.1,
+            "mean": 333.88,
+            "p50": 333.88,
+            "p95": 333.88,
+            "min": 333.88,
+            "max": 333.88,
             "stddev": 0.0,
             "samples": [
-              355.1
+              333.88
             ]
           },
           "total": {
-            "mean": 555.32,
-            "p50": 555.32,
-            "p95": 555.32,
-            "min": 555.32,
-            "max": 555.32,
+            "mean": 839.17,
+            "p50": 839.17,
+            "p95": 839.17,
+            "min": 839.17,
+            "max": 839.17,
             "stddev": 0.0,
             "samples": [
-              555.32
+              839.17
             ]
           },
           "audio_path": "audio/smallest/npn_006.wav",
@@ -994,25 +994,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 981.68,
-            "p50": 981.68,
-            "p95": 981.68,
-            "min": 981.68,
-            "max": 981.68,
+            "mean": 969.61,
+            "p50": 969.61,
+            "p95": 969.61,
+            "min": 969.61,
+            "max": 969.61,
             "stddev": 0.0,
             "samples": [
-              981.68
+              969.61
             ]
           },
           "total": {
-            "mean": 1168.97,
-            "p50": 1168.97,
-            "p95": 1168.97,
-            "min": 1168.97,
-            "max": 1168.97,
+            "mean": 1322.26,
+            "p50": 1322.26,
+            "p95": 1322.26,
+            "min": 1322.26,
+            "max": 1322.26,
             "stddev": 0.0,
             "samples": [
-              1168.97
+              1322.26
             ]
           },
           "audio_path": "audio/sarvam/npn_006.wav",
@@ -1037,30 +1037,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 814.69,
-            "p50": 814.69,
-            "p95": 814.69,
-            "min": 814.69,
-            "max": 814.69,
+            "mean": 752.7,
+            "p50": 752.7,
+            "p95": 752.7,
+            "min": 752.7,
+            "max": 752.7,
             "stddev": 0.0,
             "samples": [
-              814.69
+              752.7
             ]
           },
           "total": {
-            "mean": 1649.71,
-            "p50": 1649.71,
-            "p95": 1649.71,
-            "min": 1649.71,
-            "max": 1649.71,
+            "mean": 1639.53,
+            "p50": 1639.53,
+            "p95": 1639.53,
+            "min": 1639.53,
+            "max": 1639.53,
             "stddev": 0.0,
             "samples": [
-              1649.71
+              1639.53
             ]
           },
           "audio_path": "audio/smallest/ccr_001.wav",
@@ -1072,25 +1072,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 1183.6,
-            "p50": 1183.6,
-            "p95": 1183.6,
-            "min": 1183.6,
-            "max": 1183.6,
+            "mean": 1301.17,
+            "p50": 1301.17,
+            "p95": 1301.17,
+            "min": 1301.17,
+            "max": 1301.17,
             "stddev": 0.0,
             "samples": [
-              1183.6
+              1301.17
             ]
           },
           "total": {
-            "mean": 1656.1,
-            "p50": 1656.1,
-            "p95": 1656.1,
-            "min": 1656.1,
-            "max": 1656.1,
+            "mean": 1812.89,
+            "p50": 1812.89,
+            "p95": 1812.89,
+            "min": 1812.89,
+            "max": 1812.89,
             "stddev": 0.0,
             "samples": [
-              1656.1
+              1812.89
             ]
           },
           "audio_path": "audio/sarvam/ccr_001.wav",
@@ -1115,30 +1115,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 337.08,
-            "p50": 337.08,
-            "p95": 337.08,
-            "min": 337.08,
-            "max": 337.08,
+            "mean": 328.44,
+            "p50": 328.44,
+            "p95": 328.44,
+            "min": 328.44,
+            "max": 328.44,
             "stddev": 0.0,
             "samples": [
-              337.08
+              328.44
             ]
           },
           "total": {
-            "mean": 588.41,
-            "p50": 588.41,
-            "p95": 588.41,
-            "min": 588.41,
-            "max": 588.41,
+            "mean": 612.52,
+            "p50": 612.52,
+            "p95": 612.52,
+            "min": 612.52,
+            "max": 612.52,
             "stddev": 0.0,
             "samples": [
-              588.41
+              612.52
             ]
           },
           "audio_path": "audio/smallest/ccr_002.wav",
@@ -1150,25 +1150,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 847.9,
-            "p50": 847.9,
-            "p95": 847.9,
-            "min": 847.9,
-            "max": 847.9,
+            "mean": 869.58,
+            "p50": 869.58,
+            "p95": 869.58,
+            "min": 869.58,
+            "max": 869.58,
             "stddev": 0.0,
             "samples": [
-              847.9
+              869.58
             ]
           },
           "total": {
-            "mean": 1069.23,
-            "p50": 1069.23,
-            "p95": 1069.23,
-            "min": 1069.23,
-            "max": 1069.23,
+            "mean": 1047.88,
+            "p50": 1047.88,
+            "p95": 1047.88,
+            "min": 1047.88,
+            "max": 1047.88,
             "stddev": 0.0,
             "samples": [
-              1069.23
+              1047.88
             ]
           },
           "audio_path": "audio/sarvam/ccr_002.wav",
@@ -1193,30 +1193,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 358.94,
-            "p50": 358.94,
-            "p95": 358.94,
-            "min": 358.94,
-            "max": 358.94,
+            "mean": 435.03,
+            "p50": 435.03,
+            "p95": 435.03,
+            "min": 435.03,
+            "max": 435.03,
             "stddev": 0.0,
             "samples": [
-              358.94
+              435.03
             ]
           },
           "total": {
-            "mean": 590.06,
-            "p50": 590.06,
-            "p95": 590.06,
-            "min": 590.06,
-            "max": 590.06,
+            "mean": 867.47,
+            "p50": 867.47,
+            "p95": 867.47,
+            "min": 867.47,
+            "max": 867.47,
             "stddev": 0.0,
             "samples": [
-              590.06
+              867.47
             ]
           },
           "audio_path": "audio/smallest/ccr_003.wav",
@@ -1228,25 +1228,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 1250.77,
-            "p50": 1250.77,
-            "p95": 1250.77,
-            "min": 1250.77,
-            "max": 1250.77,
+            "mean": 870.73,
+            "p50": 870.73,
+            "p95": 870.73,
+            "min": 870.73,
+            "max": 870.73,
             "stddev": 0.0,
             "samples": [
-              1250.77
+              870.73
             ]
           },
           "total": {
-            "mean": 2011.27,
-            "p50": 2011.27,
-            "p95": 2011.27,
-            "min": 2011.27,
-            "max": 2011.27,
+            "mean": 1393.63,
+            "p50": 1393.63,
+            "p95": 1393.63,
+            "min": 1393.63,
+            "max": 1393.63,
             "stddev": 0.0,
             "samples": [
-              2011.27
+              1393.63
             ]
           },
           "audio_path": "audio/sarvam/ccr_003.wav",
@@ -1271,30 +1271,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 356.52,
-            "p50": 356.52,
-            "p95": 356.52,
-            "min": 356.52,
-            "max": 356.52,
+            "mean": 397.45,
+            "p50": 397.45,
+            "p95": 397.45,
+            "min": 397.45,
+            "max": 397.45,
             "stddev": 0.0,
             "samples": [
-              356.52
+              397.45
             ]
           },
           "total": {
-            "mean": 589.11,
-            "p50": 589.11,
-            "p95": 589.11,
-            "min": 589.11,
-            "max": 589.11,
+            "mean": 909.56,
+            "p50": 909.56,
+            "p95": 909.56,
+            "min": 909.56,
+            "max": 909.56,
             "stddev": 0.0,
             "samples": [
-              589.11
+              909.56
             ]
           },
           "audio_path": "audio/smallest/ccr_004.wav",
@@ -1306,25 +1306,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 964.73,
-            "p50": 964.73,
-            "p95": 964.73,
-            "min": 964.73,
-            "max": 964.73,
+            "mean": 978.46,
+            "p50": 978.46,
+            "p95": 978.46,
+            "min": 978.46,
+            "max": 978.46,
             "stddev": 0.0,
             "samples": [
-              964.73
+              978.46
             ]
           },
           "total": {
-            "mean": 1325.24,
-            "p50": 1325.24,
-            "p95": 1325.24,
-            "min": 1325.24,
-            "max": 1325.24,
+            "mean": 1202.11,
+            "p50": 1202.11,
+            "p95": 1202.11,
+            "min": 1202.11,
+            "max": 1202.11,
             "stddev": 0.0,
             "samples": [
-              1325.24
+              1202.11
             ]
           },
           "audio_path": "audio/sarvam/ccr_004.wav",
@@ -1349,30 +1349,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 615.89,
-            "p50": 615.89,
-            "p95": 615.89,
-            "min": 615.89,
-            "max": 615.89,
+            "mean": 504.88,
+            "p50": 504.88,
+            "p95": 504.88,
+            "min": 504.88,
+            "max": 504.88,
             "stddev": 0.0,
             "samples": [
-              615.89
+              504.88
             ]
           },
           "total": {
-            "mean": 1082.39,
-            "p50": 1082.39,
-            "p95": 1082.39,
-            "min": 1082.39,
-            "max": 1082.39,
+            "mean": 1623.84,
+            "p50": 1623.84,
+            "p95": 1623.84,
+            "min": 1623.84,
+            "max": 1623.84,
             "stddev": 0.0,
             "samples": [
-              1082.39
+              1623.84
             ]
           },
           "audio_path": "audio/smallest/ccr_005.wav",
@@ -1384,25 +1384,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 1294.26,
-            "p50": 1294.26,
-            "p95": 1294.26,
-            "min": 1294.26,
-            "max": 1294.26,
+            "mean": 1256.47,
+            "p50": 1256.47,
+            "p95": 1256.47,
+            "min": 1256.47,
+            "max": 1256.47,
             "stddev": 0.0,
             "samples": [
-              1294.26
+              1256.47
             ]
           },
           "total": {
-            "mean": 1904.83,
-            "p50": 1904.83,
-            "p95": 1904.83,
-            "min": 1904.83,
-            "max": 1904.83,
+            "mean": 1990.25,
+            "p50": 1990.25,
+            "p95": 1990.25,
+            "min": 1990.25,
+            "max": 1990.25,
             "stddev": 0.0,
             "samples": [
-              1904.83
+              1990.25
             ]
           },
           "audio_path": "audio/sarvam/ccr_005.wav",
@@ -1427,30 +1427,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 317.95,
-            "p50": 317.95,
-            "p95": 317.95,
-            "min": 317.95,
-            "max": 317.95,
+            "mean": 525.47,
+            "p50": 525.47,
+            "p95": 525.47,
+            "min": 525.47,
+            "max": 525.47,
             "stddev": 0.0,
             "samples": [
-              317.95
+              525.47
             ]
           },
           "total": {
-            "mean": 513.7,
-            "p50": 513.7,
-            "p95": 513.7,
-            "min": 513.7,
-            "max": 513.7,
+            "mean": 1179.64,
+            "p50": 1179.64,
+            "p95": 1179.64,
+            "min": 1179.64,
+            "max": 1179.64,
             "stddev": 0.0,
             "samples": [
-              513.7
+              1179.64
             ]
           },
           "audio_path": "audio/smallest/ccr_006.wav",
@@ -1462,25 +1462,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 986.61,
-            "p50": 986.61,
-            "p95": 986.61,
-            "min": 986.61,
-            "max": 986.61,
+            "mean": 759.53,
+            "p50": 759.53,
+            "p95": 759.53,
+            "min": 759.53,
+            "max": 759.53,
             "stddev": 0.0,
             "samples": [
-              986.61
+              759.53
             ]
           },
           "total": {
-            "mean": 1429.63,
-            "p50": 1429.63,
-            "p95": 1429.63,
-            "min": 1429.63,
-            "max": 1429.63,
+            "mean": 1233.48,
+            "p50": 1233.48,
+            "p95": 1233.48,
+            "min": 1233.48,
+            "max": 1233.48,
             "stddev": 0.0,
             "samples": [
-              1429.63
+              1233.48
             ]
           },
           "audio_path": "audio/sarvam/ccr_006.wav",
@@ -1505,30 +1505,30 @@
           "audio_format": null,
           "runs": 1,
           "errors": 1,
-          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v",
+          "last_error": "HTTP 400: {\"error\":{\"message\":\"The model `playai-tts` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use in",
           "is_streaming": true
         },
         "smallest": {
           "ttfb": {
-            "mean": 349.54,
-            "p50": 349.54,
-            "p95": 349.54,
-            "min": 349.54,
-            "max": 349.54,
+            "mean": 423.49,
+            "p50": 423.49,
+            "p95": 423.49,
+            "min": 423.49,
+            "max": 423.49,
             "stddev": 0.0,
             "samples": [
-              349.54
+              423.49
             ]
           },
           "total": {
-            "mean": 471.41,
-            "p50": 471.41,
-            "p95": 471.41,
-            "min": 471.41,
-            "max": 471.41,
+            "mean": 901.4,
+            "p50": 901.4,
+            "p95": 901.4,
+            "min": 901.4,
+            "max": 901.4,
             "stddev": 0.0,
             "samples": [
-              471.41
+              901.4
             ]
           },
           "audio_path": "audio/smallest/ccr_007.wav",
@@ -1540,25 +1540,25 @@
         },
         "sarvam": {
           "ttfb": {
-            "mean": 1047.15,
-            "p50": 1047.15,
-            "p95": 1047.15,
-            "min": 1047.15,
-            "max": 1047.15,
+            "mean": 6556.65,
+            "p50": 6556.65,
+            "p95": 6556.65,
+            "min": 6556.65,
+            "max": 6556.65,
             "stddev": 0.0,
             "samples": [
-              1047.15
+              6556.65
             ]
           },
           "total": {
-            "mean": 1222.86,
-            "p50": 1222.86,
-            "p95": 1222.86,
-            "min": 1222.86,
-            "max": 1222.86,
+            "mean": 7005.03,
+            "p50": 7005.03,
+            "p95": 7005.03,
+            "min": 7005.03,
+            "max": 7005.03,
             "stddev": 0.0,
             "samples": [
-              1222.86
+              7005.03
             ]
           },
           "audio_path": "audio/sarvam/ccr_007.wav",

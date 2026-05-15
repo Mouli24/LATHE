@@ -1,8 +1,29 @@
 import base64
+import io
 import os
 import time
+import wave
 
 from .base import AUDIO_OUT_BASE, Provider, SynthesisResult
+
+_SARVAM_SAMPLE_RATE = 22050  # Bulbul v2 returns 22050 Hz 16-bit mono PCM
+
+
+def _pcm_to_wav(pcm: bytes, sample_rate: int = _SARVAM_SAMPLE_RATE) -> bytes:
+    buf = io.BytesIO()
+    with wave.open(buf, "wb") as w:
+        w.setnchannels(1)
+        w.setsampwidth(2)  # 16-bit
+        w.setframerate(sample_rate)
+        w.writeframes(pcm)
+    return buf.getvalue()
+
+
+def _ensure_wav(data: bytes) -> bytes:
+    """Wrap raw PCM in a WAV container if the RIFF header is missing."""
+    if data[:4] == b"RIFF":
+        return data
+    return _pcm_to_wav(data)
 
 
 class SarvamProvider(Provider):
@@ -95,7 +116,7 @@ class SarvamProvider(Provider):
                 )
 
             if sample_idx == 0:
-                out_path.write_bytes(base64.b64decode(audios[0]))
+                out_path.write_bytes(_ensure_wav(base64.b64decode(audios[0])))
 
             return SynthesisResult(
                 provider=self.name,

@@ -17,7 +17,7 @@ class GroqProvider(Provider):
         super().__init__()
         self._api_key = api_key
         self._model = os.environ.get("GROQ_MODEL", "playai-tts")
-        self._voice = os.environ.get("GROQ_VOICE", "Fritz-PlayAI")
+        self._voice = os.environ.get("GROQ_VOICE", "diana")
 
     async def synthesize(self, text: str, test_id: str, sample_idx: int = 0) -> SynthesisResult:
         url = "https://api.groq.com/openai/v1/audio/speech"

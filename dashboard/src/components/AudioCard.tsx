@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
 import { Icon } from "./icons"
 import { Waveform } from "./Waveform"
 
@@ -43,19 +43,42 @@ export function AudioCard({
 }: AudioCardProps) {
   const [playing, setPlaying] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [loadError, setLoadError] = useState(false)
+  const audioRef = useRef<HTMLAudioElement>(null)
 
   const accent = ROLE_COLORS[role]
   const label = ROLE_LABELS[role]
+  const hasAudio = !!audioPath && !loadError
+
+  useEffect(() => {
+    setLoadError(false)
+    setPlaying(false)
+    setProgress(0)
+  }, [audioPath])
 
   function handlePlayPause() {
-    setPlaying((v) => !v)
-    if (!playing) setProgress(0)
+    const audio = audioRef.current
+    if (!audio) return
+    if (playing) {
+      audio.pause()
+      setPlaying(false)
+    } else {
+      audio.play().catch(() => {
+        setLoadError(true)
+        setPlaying(false)
+      })
+      setPlaying(true)
+    }
   }
 
   function handleWaveformClick(e: React.MouseEvent<HTMLCanvasElement>) {
     const rect = e.currentTarget.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    setProgress(x / rect.width)
+    const pct = (e.clientX - rect.left) / rect.width
+    const audio = audioRef.current
+    if (audio && audio.duration) {
+      audio.currentTime = pct * audio.duration
+      setProgress(pct)
+    }
   }
 
   return (
@@ -97,19 +120,21 @@ export function AudioCard({
       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
         <button
           type="button"
-          onClick={handlePlayPause}
+          onClick={hasAudio ? handlePlayPause : undefined}
+          disabled={!hasAudio}
           style={{
             width: 28,
             height: 28,
             borderRadius: "50%",
-            background: accent + "22",
-            border: `1px solid ${accent}44`,
-            color: accent,
+            background: hasAudio ? accent + "22" : "var(--bg-3)",
+            border: `1px solid ${hasAudio ? accent + "44" : "var(--line)"}`,
+            color: hasAudio ? accent : "var(--ink-faint)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            cursor: "pointer",
+            cursor: hasAudio ? "pointer" : "not-allowed",
             flexShrink: 0,
+            opacity: hasAudio ? 1 : 0.45,
           }}
         >
           {playing ? (
@@ -123,13 +148,33 @@ export function AudioCard({
             seed={seed}
             playing={playing}
             progress={progress}
-            accent={accent}
+            accent={hasAudio ? accent : "var(--bg-3)"}
             height={32}
             bars={36}
-            onClick={handleWaveformClick}
+            onClick={hasAudio ? handleWaveformClick : undefined}
           />
         </div>
       </div>
+
+      {/* Hidden audio element — drives actual playback */}
+      {audioPath && (
+        <audio
+          ref={audioRef}
+          src={`/${audioPath}`}
+          onTimeUpdate={() => {
+            const a = audioRef.current
+            if (a && a.duration > 0) setProgress(a.currentTime / a.duration)
+          }}
+          onEnded={() => {
+            setPlaying(false)
+            setProgress(0)
+          }}
+          onError={() => {
+            setLoadError(true)
+            setPlaying(false)
+          }}
+        />
+      )}
 
       {/* metrics */}
       <div
@@ -156,12 +201,16 @@ export function AudioCard({
             style={{
               fontSize: 13,
               fontWeight: 600,
-              color: accent,
+              color: p50 > 0 ? accent : "var(--ink-faint)",
               fontFamily: "Geist Mono, monospace",
             }}
           >
-            {p50.toFixed(0)}
-            <span style={{ fontSize: 10, fontWeight: 400, color: "var(--ink-dim)", marginLeft: 1 }}>ms</span>
+            {p50 > 0 ? (
+              <>
+                {p50.toFixed(0)}
+                <span style={{ fontSize: 10, fontWeight: 400, color: "var(--ink-dim)", marginLeft: 1 }}>ms</span>
+              </>
+            ) : "—"}
           </div>
         </div>
         <div>
@@ -184,8 +233,12 @@ export function AudioCard({
               fontFamily: "Geist Mono, monospace",
             }}
           >
-            {p95.toFixed(0)}
-            <span style={{ fontSize: 10, fontWeight: 400, color: "var(--ink-dim)", marginLeft: 1 }}>ms</span>
+            {p95 > 0 ? (
+              <>
+                {p95.toFixed(0)}
+                <span style={{ fontSize: 10, fontWeight: 400, color: "var(--ink-dim)", marginLeft: 1 }}>ms</span>
+              </>
+            ) : "—"}
           </div>
         </div>
         <div>
@@ -208,45 +261,97 @@ export function AudioCard({
               fontFamily: "Geist Mono, monospace",
             }}
           >
-            {total.toFixed(0)}
-            <span style={{ fontSize: 10, fontWeight: 400, color: "var(--ink-dim)", marginLeft: 1 }}>ms</span>
+            {total > 0 ? (
+              <>
+                {total.toFixed(0)}
+                <span style={{ fontSize: 10, fontWeight: 400, color: "var(--ink-dim)", marginLeft: 1 }}>ms</span>
+              </>
+            ) : "—"}
           </div>
         </div>
       </div>
 
-      {/* Real audio player — shown when an actual audio file path is available */}
-      {audioPath && (
-        <audio
-          controls
-          src={`/${audioPath}`}
-          style={{
-            width: "100%",
-            height: 28,
-            marginTop: 6,
-            borderRadius: 6,
-            accentColor: accent,
-          }}
-        />
-      )}
-
-      {/* Error indicator */}
-      {errors > 0 && (
+      {/* No audio state */}
+      {!audioPath && errors === 0 && (
         <div
           style={{
-            marginTop: 6,
             padding: "4px 8px",
             borderRadius: 6,
-            background: "rgba(248,113,113,0.12)",
-            border: "1px solid rgba(248,113,113,0.25)",
+            background: "rgba(255,255,255,0.03)",
+            border: "1px solid var(--line)",
+            fontSize: 10.5,
+            color: "var(--ink-faint)",
+          }}
+        >
+          No audio recorded
+        </div>
+      )}
+
+      {/* Load error (file missing / codec issue) */}
+      {audioPath && loadError && (
+        <div
+          style={{
+            padding: "4px 8px",
+            borderRadius: 6,
+            background: "rgba(248,113,113,0.08)",
+            border: "1px solid rgba(248,113,113,0.20)",
             fontSize: 10.5,
             color: "#fca5a5",
           }}
-          title={errorMsg ?? undefined}
         >
-          {errors} error{errors > 1 ? "s" : ""}
-          {errorMsg ? ` · ${errorMsg.slice(0, 60)}` : ""}
+          Audio file unavailable
         </div>
       )}
+
+      {/* Provider error indicator */}
+      {errors > 0 && (() => {
+        const isTerms = errorMsg?.includes("terms acceptance") || errorMsg?.includes("terms at")
+        const termsUrl = (() => {
+          if (!errorMsg) return null
+          const m = errorMsg.match(/https?:\/\/[^\s"\\]+/)
+          return m ? m[0].replace(/\\"/g, "") : null
+        })()
+
+        return (
+          <div
+            style={{
+              padding: "6px 8px",
+              borderRadius: 6,
+              background: "rgba(248,113,113,0.10)",
+              border: "1px solid rgba(248,113,113,0.22)",
+              fontSize: 10.5,
+              color: "#fca5a5",
+              lineHeight: 1.5,
+            }}
+          >
+            {isTerms ? (
+              <>
+                <div style={{ fontWeight: 600, marginBottom: 2 }}>Model terms not accepted</div>
+                {termsUrl && (
+                  <a
+                    href={termsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      color: "#fbbf24",
+                      textDecoration: "underline",
+                      fontSize: 10,
+                      cursor: "pointer",
+                    }}
+                  >
+                    Accept terms on Groq Console →
+                  </a>
+                )}
+              </>
+            ) : (
+              <>
+                {errors} error{errors > 1 ? "s" : ""}
+                {errorMsg ? ` · ${errorMsg.replace(/\{.*\}/s, "").slice(0, 60).trim()}` : ""}
+              </>
+            )}
+          </div>
+        )
+      })()}
     </div>
   )
 }

@@ -93,6 +93,7 @@ export function LatencyCalculatorView({ data, activeProviders }: LatencyCalculat
 
           <input
             type="range"
+            className="latcalc-range"
             min={100}
             max={2000}
             step={10}

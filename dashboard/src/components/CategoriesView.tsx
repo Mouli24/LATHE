@@ -1,5 +1,5 @@
 import type { RunResults, ProviderName, MetricKey } from "@/lib/types"
-import { PROVIDER_LABELS, PROVIDER_COLORS } from "@/lib/constants"
+import { PROVIDER_LABELS, PROVIDER_COLORS, CATEGORY_DESCRIPTIONS } from "@/lib/constants"
 import { LatencyChart } from "./LatencyChart"
 
 interface CategoriesViewProps {
@@ -9,9 +9,9 @@ interface CategoriesViewProps {
 }
 
 const CATEGORIES = [
-  { key: "credit_card_otp_readback", label: "OTP / Card", color: "#7dd3c0", cls: "cat-otp" },
-  { key: "hinglish_codeswitch", label: "Hinglish", color: "#c4b5fd", cls: "cat-hing" },
-  { key: "indian_proper_nouns_and_codes", label: "Proper Nouns", color: "#fbbf24", cls: "cat-npn" },
+  { key: "credit_card_otp_readback", label: "OTP / Card Readback", color: "#7dd3c0", cls: "cat-otp" },
+  { key: "hinglish_codeswitch", label: "Hinglish Conversations", color: "#c4b5fd", cls: "cat-hing" },
+  { key: "indian_proper_nouns_and_codes", label: "Indian Financial Codes", color: "#fbbf24", cls: "cat-npn" },
 ]
 
 function getMetricAvg(data: RunResults, provider: ProviderName, category: string, key: MetricKey): number {
@@ -135,7 +135,7 @@ export function CategoriesView({ data, activeProviders, metric }: CategoriesView
         {catData.map((cat) => (
           <div key={cat.key} className="v3-card fade-up" style={{ padding: "20px" }}>
             {/* Category badge + name */}
-            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
               <span
                 className={`v3-pill ${cat.cls}`}
                 style={{ fontSize: 11, padding: "3px 10px" }}
@@ -144,6 +144,9 @@ export function CategoriesView({ data, activeProviders, metric }: CategoriesView
               </span>
               <span className="v3-badge">{cat.utterances.length} tests</span>
             </div>
+            <p style={{ fontSize: 11.5, color: "var(--ink-faint)", margin: "0 0 14px", lineHeight: 1.5 }}>
+              {CATEGORY_DESCRIPTIONS[cat.key]}
+            </p>
 
             {/* Best provider */}
             {cat.best && (
@@ -278,13 +281,14 @@ export function CategoriesView({ data, activeProviders, metric }: CategoriesView
                         key={p}
                         style={{
                           padding: "8px 14px",
-                          textAlign: "right",
+                          textAlign: "left",
                           color: PROVIDER_COLORS[p] || "var(--ink-faint)",
                           fontWeight: 500,
                           fontSize: 10.5,
                           letterSpacing: "0.05em",
                           textTransform: "uppercase",
                           fontFamily: "Geist Mono, monospace",
+                          minWidth: 200,
                         }}
                       >
                         {PROVIDER_LABELS[p] ?? p}
@@ -301,9 +305,10 @@ export function CategoriesView({ data, activeProviders, metric }: CategoriesView
                           i < cat.utterances.slice(0, 5).length - 1
                             ? "1px solid var(--line)"
                             : "none",
+                        verticalAlign: "top",
                       }}
                     >
-                      <td style={{ padding: "8px 14px" }}>
+                      <td style={{ padding: "12px 14px" }}>
                         <div
                           style={{
                             fontSize: 11.5,
@@ -318,29 +323,45 @@ export function CategoriesView({ data, activeProviders, metric }: CategoriesView
                           style={{
                             fontSize: 12,
                             color: "var(--ink-2)",
-                            maxWidth: 300,
-                            overflow: "hidden",
-                            textOverflow: "ellipsis",
-                            whiteSpace: "nowrap",
+                            maxWidth: 260,
+                            lineHeight: 1.4,
                           }}
                         >
                           {r.text}
                         </div>
                       </td>
                       {providers.map((p) => {
-                        const val = r.outputs[p]?.ttfb?.p50
+                        const out = r.outputs[p]
+                        const val = out?.ttfb?.p50
+                        const audioPath = out?.audio_path
                         return (
-                          <td
-                            key={p}
-                            style={{
-                              padding: "8px 14px",
-                              textAlign: "right",
-                              fontFamily: "Geist Mono, monospace",
-                              fontSize: 12,
-                              color: val != null && val > 0 ? "var(--ink-2)" : "var(--ink-faint)",
-                            }}
-                          >
-                            {val != null && val > 0 ? `${Math.round(val)}ms` : "—"}
+                          <td key={p} style={{ padding: "12px 14px" }}>
+                            <div
+                              style={{
+                                fontFamily: "Geist Mono, monospace",
+                                fontSize: 13,
+                                fontWeight: 600,
+                                color: val != null && val > 0
+                                  ? (PROVIDER_COLORS[p] || "var(--ink-2)")
+                                  : "var(--ink-faint)",
+                                marginBottom: audioPath ? 8 : 0,
+                              }}
+                            >
+                              {val != null && val > 0 ? `${Math.round(val)}ms` : "—"}
+                            </div>
+                            {audioPath && (
+                              <audio
+                                controls
+                                src={`/${audioPath}`}
+                                style={{
+                                  height: 28,
+                                  width: "100%",
+                                  minWidth: 160,
+                                  maxWidth: 220,
+                                  opacity: 0.85,
+                                }}
+                              />
+                            )}
                           </td>
                         )
                       })}

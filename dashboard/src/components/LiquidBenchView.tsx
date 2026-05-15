@@ -27,11 +27,34 @@ function computeCurrentP50(data: RunResults, providers: ProviderName[], tick: nu
   return bestVal === Infinity ? 0 : bestVal
 }
 
+const CAT_LABEL: Record<string, string> = {
+  credit_card_otp_readback: "OTP / Card Readback",
+  hinglish_codeswitch: "Hinglish Conversations",
+  indian_proper_nouns_and_codes: "Indian Financial Codes",
+}
+
+const CAT_COLOR: Record<string, string> = {
+  credit_card_otp_readback: "#7dd3c0",
+  hinglish_codeswitch: "#c4b5fd",
+  indian_proper_nouns_and_codes: "#fbbf24",
+}
+
 export function LiquidBenchView({ data, activeProviders }: LiquidBenchViewProps) {
   const [running, setRunning] = useState(false)
   const [tick, setTick] = useState(0)
   const [history, setHistory] = useState<number[]>([])
+  const [clock, setClock] = useState(() => new Date().toLocaleTimeString())
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const clockRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  useEffect(() => {
+    clockRef.current = setInterval(() => {
+      setClock(new Date().toLocaleTimeString())
+    }, 1000)
+    return () => {
+      if (clockRef.current) clearInterval(clockRef.current)
+    }
+  }, [])
 
   const providers =
     activeProviders.length > 0 ? activeProviders : (data?.providers as ProviderName[] ?? [])
@@ -171,7 +194,7 @@ export function LiquidBenchView({ data, activeProviders }: LiquidBenchViewProps)
                   fontFamily: "Geist Mono, monospace",
                 }}
               >
-                {new Date().toLocaleTimeString()}
+                {clock}
               </span>
             </div>
 
@@ -216,33 +239,56 @@ export function LiquidBenchView({ data, activeProviders }: LiquidBenchViewProps)
                 </div>
 
                 {/* Current utterance */}
-                {running && currentUtterance && (
-                  <div
-                    style={{
-                      padding: "10px 14px",
-                      background: "rgba(255,255,255,0.025)",
-                      borderRadius: 8,
-                      borderLeft: "2px solid var(--lav-2)",
-                      marginBottom: 16,
-                    }}
-                  >
-                    <div style={{ fontSize: 10.5, color: "var(--lav-2)", marginBottom: 3, fontFamily: "Geist Mono, monospace" }}>
-                      TESTING
-                    </div>
+                {running && currentUtterance && (() => {
+                  const currentResult = data.results[tick]
+                  const cat = currentResult?.category ?? ""
+                  const catLabel = CAT_LABEL[cat] ?? cat
+                  const catColor = CAT_COLOR[cat] ?? "var(--lav-2)"
+                  return (
                     <div
                       style={{
-                        fontSize: 13,
-                        color: "var(--ink-2)",
-                        fontStyle: "italic",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
+                        padding: "10px 14px",
+                        background: "rgba(255,255,255,0.025)",
+                        borderRadius: 8,
+                        borderLeft: `2px solid ${catColor}`,
+                        marginBottom: 16,
                       }}
                     >
-                      &ldquo;{currentUtterance}&rdquo;
+                      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 5 }}>
+                        <div style={{ fontSize: 10.5, color: "var(--lav-2)", fontFamily: "Geist Mono, monospace" }}>
+                          TESTING
+                        </div>
+                        {catLabel && (
+                          <span
+                            style={{
+                              fontSize: 10,
+                              padding: "1px 7px",
+                              borderRadius: 20,
+                              background: `${catColor}22`,
+                              color: catColor,
+                              border: `1px solid ${catColor}44`,
+                              fontWeight: 500,
+                            }}
+                          >
+                            {catLabel}
+                          </span>
+                        )}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: 13,
+                          color: "var(--ink-2)",
+                          fontStyle: "italic",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          whiteSpace: "nowrap",
+                        }}
+                      >
+                        &ldquo;{currentUtterance}&rdquo;
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )
+                })()}
 
                 {/* Progress bar */}
                 <div style={{ marginBottom: 16 }}>

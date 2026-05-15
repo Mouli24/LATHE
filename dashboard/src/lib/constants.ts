@@ -15,9 +15,15 @@ export const PROVIDER_COLORS: Record<ProviderName, string> = {
 }
 
 export const CATEGORY_LABELS: Record<string, string> = {
-  hinglish_codeswitch: "Hinglish Code-Switch",
-  indian_proper_nouns_and_codes: "Indian Proper Nouns & Codes",
+  hinglish_codeswitch: "Hinglish Conversations",
+  indian_proper_nouns_and_codes: "Indian Financial Codes",
   credit_card_otp_readback: "OTP / Card Readback",
+}
+
+export const CATEGORY_DESCRIPTIONS: Record<string, string> = {
+  hinglish_codeswitch: "Natural Hindi-English code-switching · 'Sir aapka order deliver ho jayega'",
+  indian_proper_nouns_and_codes: "IFSC codes, PAN, Aadhaar · precision parsing of Indian financial identifiers",
+  credit_card_otp_readback: "Every digit matters · OTPs, card numbers, and PIN readbacks",
 }
 
 export const CATEGORY_COLORS: Record<string, string> = {

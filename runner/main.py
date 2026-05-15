@@ -14,10 +14,10 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from providers.base import Provider, SynthesisResult
-from providers.groq import GroqProvider
-from providers.smallest import SmallestProvider
-from providers.sarvam import SarvamProvider
+from .providers.base import Provider, SynthesisResult
+from .providers.groq import GroqProvider
+from .providers.smallest import SmallestProvider
+from .providers.sarvam import SarvamProvider
 
 load_dotenv()
 
@@ -154,6 +154,7 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument("--runs", type=int, default=DEFAULT_RUNS, help="samples per (provider, test)")
     p.add_argument("--providers", type=str, default="", help="comma-separated provider names")
     p.add_argument("--categories", type=str, default="", help="comma-separated category names")
+    p.add_argument("--merge", action="store_true", help="merge results into existing results.json instead of replacing")
     return p.parse_args()
 
 
@@ -245,15 +246,29 @@ async def main() -> None:
         })
 
     run_id = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H-%M-%SZ")
-    output = {
-        "schema_version": SCHEMA_VERSION,
-        "run_id": run_id,
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "runs_per_cell": args.runs,
-        "providers": [p.name for p in instances] + skipped,
-        "skipped_providers": skipped,
-        "results": grouped,
-    }
+
+    if args.merge and RESULTS_PATH.exists():
+        with RESULTS_PATH.open(encoding="utf-8") as f:
+            existing = json.load(f)
+        # Build lookup of new results by test_id
+        new_by_id = {r["test_id"]: r for r in grouped}
+        for row in existing["results"]:
+            tid = row["test_id"]
+            if tid in new_by_id:
+                row["outputs"].update(new_by_id[tid]["outputs"])
+        all_providers = list(dict.fromkeys(existing.get("providers", []) + [p.name for p in instances]))
+        output = {**existing, "providers": all_providers, "generated_at": datetime.now(timezone.utc).isoformat()}
+        output["results"] = existing["results"]
+    else:
+        output = {
+            "schema_version": SCHEMA_VERSION,
+            "run_id": run_id,
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "runs_per_cell": args.runs,
+            "providers": [p.name for p in instances] + skipped,
+            "skipped_providers": skipped,
+            "results": grouped,
+        }
 
     RESULTS_PATH.parent.mkdir(parents=True, exist_ok=True)
     with RESULTS_PATH.open("w", encoding="utf-8") as f:

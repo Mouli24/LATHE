@@ -219,6 +219,23 @@ export function UtterancePeek({ data, activeProviders, metric = "p50", baselineP
                 >
                   &ldquo;{result.text}&rdquo;
                 </p>
+                {result.expected_behavior && (
+                  <p
+                    style={{
+                      fontSize: 11.5,
+                      color: "var(--ink-faint)",
+                      lineHeight: 1.5,
+                      margin: "8px 0 0",
+                      fontStyle: "normal",
+                      display: "flex",
+                      alignItems: "flex-start",
+                      gap: 5,
+                    }}
+                  >
+                    <span style={{ color: "var(--lav-2)", flexShrink: 0, marginTop: 1 }}>▸</span>
+                    {result.expected_behavior}
+                  </p>
+                )}
               </blockquote>
 
               {/* Provider audio cards */}

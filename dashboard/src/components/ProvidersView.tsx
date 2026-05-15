@@ -51,7 +51,7 @@ function getCategoryP50s(
 const CAT_SHORT: Record<string, string> = {
   credit_card_otp_readback: "OTP",
   hinglish_codeswitch: "Hinglish",
-  indian_proper_nouns_and_codes: "Nouns",
+  indian_proper_nouns_and_codes: "Fin. Codes",
 }
 
 function CompareBar({ value, max, color }: { value: number; max: number; color: string }) {

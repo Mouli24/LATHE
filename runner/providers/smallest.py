@@ -1,7 +1,27 @@
+import io
 import os
+import struct
 import time
+import wave
 
 from .base import AUDIO_OUT_BASE, Provider, SynthesisResult
+
+
+def _pcm_to_wav(pcm: bytes, sample_rate: int, channels: int = 1, bits: int = 16) -> bytes:
+    buf = io.BytesIO()
+    with wave.open(buf, "wb") as w:
+        w.setnchannels(channels)
+        w.setsampwidth(bits // 8)
+        w.setframerate(sample_rate)
+        w.writeframes(pcm)
+    return buf.getvalue()
+
+
+def _ensure_wav(data: bytes, sample_rate: int) -> bytes:
+    """Wrap raw PCM in a WAV container if the RIFF header is missing."""
+    if data[:4] == b"RIFF":
+        return data
+    return _pcm_to_wav(data, sample_rate)
 
 
 class SmallestProvider(Provider):
@@ -59,7 +79,7 @@ class SmallestProvider(Provider):
                     chunks.append(chunk)
 
             total_ms = (time.perf_counter() - t_start) * 1000
-            audio_bytes = b"".join(chunks)
+            audio_bytes = _ensure_wav(b"".join(chunks), payload["sample_rate"])
             if sample_idx == 0:
                 out_path.write_bytes(audio_bytes)
 
