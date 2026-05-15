@@ -4,6 +4,28 @@
 @tailwind utilities;
 
 :root {
+  /* shadcn/ui compatibility — dark theme values */
+  --background: 246 47% 4%;
+  --foreground: 270 30% 97%;
+  --card: 248 25% 9%;
+  --card-foreground: 270 30% 97%;
+  --popover: 248 25% 9%;
+  --popover-foreground: 270 30% 97%;
+  --primary: 270 30% 97%;
+  --primary-foreground: 248 25% 9%;
+  --secondary: 252 20% 17%;
+  --secondary-foreground: 270 30% 97%;
+  --muted: 252 20% 17%;
+  --muted-foreground: 265 8% 55%;
+  --accent: 252 20% 17%;
+  --accent-foreground: 270 30% 97%;
+  --destructive: 0 63% 45%;
+  --destructive-foreground: 270 30% 97%;
+  --border: 252 14% 18%;
+  --input: 252 14% 18%;
+  --ring: 270 30% 83%;
+  --radius: 0.5rem;
+
   --bg-0:#0c0b10;
   --bg-1:#141319;
   --bg-2:#1a1822;
@@ -28,6 +50,7 @@
 }
 
 html, body {
+  color-scheme: dark;
   background: var(--bg-0);
   color: var(--ink);
   font-family: 'Geist', ui-sans-serif, system-ui, sans-serif;

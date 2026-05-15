@@ -34,6 +34,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState("dash")
   const [mode, setMode] = useState("Streaming")
   const [metric, setMetric] = useState<MetricKey>("p50")
+  const [baselineProvider, setBaselineProvider] = useState<ProviderName | null>(null)
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [streamingFilter, setStreamingFilter] = useState<"all" | "streaming" | "non-streaming">("all")
   const [searchQuery, setSearchQuery] = useState("")
@@ -207,7 +208,10 @@ export default function App() {
         activeTab={activeTab}
         mode={mode}
         onTabChange={setActiveTab}
-        onModeChange={setMode}
+        onModeChange={(m) => {
+          setMode(m)
+          setStreamingFilter(m === "Non-stream" ? "non-streaming" : "streaming")
+        }}
         providers={availableProviders}
         p50Map={p50Map}
       />
@@ -233,15 +237,25 @@ export default function App() {
               metric={metric}
               onMetricChange={setMetric}
               streamingFilter={streamingFilter}
-              onStreamingFilterChange={setStreamingFilter}
+              onStreamingFilterChange={(f) => {
+                setStreamingFilter(f)
+                if (f === "streaming") setMode("Streaming")
+                else if (f === "non-streaming") setMode("Non-stream")
+              }}
             />
             <div className="px-7 lg:px-9 pb-10">
               <div className="grid grid-cols-12 gap-4" style={{ marginTop: "1.25rem" }}>
                 <div className="col-span-12 xl:col-span-9">
-                  <HeroCards data={filteredData} activeProviders={activeProviders} metric={metric} />
+                  <HeroCards
+                    data={filteredData}
+                    activeProviders={activeProviders}
+                    metric={metric}
+                    baselineProvider={baselineProvider}
+                    onSetBaseline={setBaselineProvider}
+                  />
                 </div>
                 <div className="col-span-12 xl:col-span-3">
-                  <FeaturedCard />
+                  <FeaturedCard onNavigate={setActiveTab} />
                 </div>
               </div>
               <ActiveBenchPanel
@@ -254,6 +268,7 @@ export default function App() {
                 data={filteredData}
                 activeProviders={activeProviders}
                 metric={metric}
+                baselineProvider={baselineProvider}
               />
             </div>
           </>

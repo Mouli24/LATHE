@@ -12,6 +12,9 @@ interface AudioCardProps {
   n?: number
   stream?: boolean
   role?: ProviderRole
+  audioPath?: string | null
+  errors?: number
+  errorMsg?: string | null
 }
 
 const ROLE_COLORS: Record<ProviderRole, string> = {
@@ -34,6 +37,9 @@ export function AudioCard({
   n,
   stream,
   role = "smallest",
+  audioPath,
+  errors = 0,
+  errorMsg,
 }: AudioCardProps) {
   const [playing, setPlaying] = useState(false)
   const [progress, setProgress] = useState(0)
@@ -207,6 +213,40 @@ export function AudioCard({
           </div>
         </div>
       </div>
+
+      {/* Real audio player — shown when an actual audio file path is available */}
+      {audioPath && (
+        <audio
+          controls
+          src={`/${audioPath}`}
+          style={{
+            width: "100%",
+            height: 28,
+            marginTop: 6,
+            borderRadius: 6,
+            accentColor: accent,
+          }}
+        />
+      )}
+
+      {/* Error indicator */}
+      {errors > 0 && (
+        <div
+          style={{
+            marginTop: 6,
+            padding: "4px 8px",
+            borderRadius: 6,
+            background: "rgba(248,113,113,0.12)",
+            border: "1px solid rgba(248,113,113,0.25)",
+            fontSize: 10.5,
+            color: "#fca5a5",
+          }}
+          title={errorMsg ?? undefined}
+        >
+          {errors} error{errors > 1 ? "s" : ""}
+          {errorMsg ? ` · ${errorMsg.slice(0, 60)}` : ""}
+        </div>
+      )}
     </div>
   )
 }

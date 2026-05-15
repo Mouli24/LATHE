@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { Icon } from "./icons"
 
 interface SidebarProps {
@@ -6,6 +7,7 @@ interface SidebarProps {
   onTabChange: (t: string) => void
   onModeChange: (m: string) => void
   providers: string[]
+  p50Map?: Record<string, number>
 }
 
 const PROVIDER_COLORS: Record<string, string> = {
@@ -20,12 +22,6 @@ const PROVIDER_LABELS: Record<string, string> = {
   groq: "Groq PlayAI",
 }
 
-const MOCK_P50: Record<string, number> = {
-  smallest: 342,
-  sarvam: 518,
-  groq: 391,
-}
-
 const NAV_ITEMS = [
   { id: "dash", label: "Dashboard", icon: "Activity" as const },
   { id: "providers", label: "Providers", icon: "Layers" as const },
@@ -35,14 +31,15 @@ const NAV_ITEMS = [
   { id: "liquid", label: "Liquid Bench", icon: "Sparkle" as const, beta: true },
 ]
 
-export function Sidebar({ activeTab, mode, onTabChange, onModeChange, providers }: SidebarProps) {
+export function Sidebar({ activeTab, mode, onTabChange, onModeChange, providers, p50Map = {} }: SidebarProps) {
+  const [collapsed, setCollapsed] = useState(false)
   const displayProviders = providers.length > 0 ? providers : ["smallest", "sarvam", "groq"]
 
   return (
     <aside
       style={{
-        width: 260,
-        minWidth: 260,
+        width: collapsed ? 64 : 260,
+        minWidth: collapsed ? 64 : 260,
         height: "100vh",
         position: "sticky",
         top: 0,
@@ -50,10 +47,12 @@ export function Sidebar({ activeTab, mode, onTabChange, onModeChange, providers 
         borderRight: "1px solid var(--line)",
         display: "flex",
         flexDirection: "column",
-        padding: "20px 16px",
+        padding: collapsed ? "20px 12px" : "20px 16px",
         gap: 0,
         overflowY: "auto",
+        overflowX: "hidden",
         zIndex: 10,
+        transition: "width 0.25s ease, min-width 0.25s ease, padding 0.25s ease",
       }}
     >
       {/* Logo */}
@@ -61,10 +60,12 @@ export function Sidebar({ activeTab, mode, onTabChange, onModeChange, providers 
         style={{
           display: "flex",
           alignItems: "center",
-          gap: 10,
+          gap: collapsed ? 0 : 10,
           marginBottom: 24,
           paddingBottom: 20,
           borderBottom: "1px solid var(--line)",
+          overflow: "hidden",
+          justifyContent: collapsed ? "center" : "flex-start",
         }}
       >
         {/* Concentric circles icon */}
@@ -87,63 +88,115 @@ export function Sidebar({ activeTab, mode, onTabChange, onModeChange, providers 
             <circle cx="12" cy="12" r="2" fill="#a78bfa" />
           </svg>
         </div>
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ fontSize: 14, fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.01em" }}>
-            Lathe®
-          </div>
-          <div style={{ fontSize: 11, color: "var(--ink-faint)", marginTop: 1 }}>Voice AI Bench</div>
-        </div>
-        <button
-          type="button"
-          style={{
-            background: "none",
-            border: "none",
-            color: "var(--ink-faint)",
-            cursor: "pointer",
-            padding: 2,
-          }}
-        >
-          <Icon.Chevron style={{ width: 16, height: 16 }} />
-        </button>
-      </div>
-
-      {/* Segmented mode toggle */}
-      <div
-        style={{
-          display: "flex",
-          background: "var(--bg-2)",
-          borderRadius: 10,
-          padding: 3,
-          marginBottom: 20,
-          gap: 2,
-        }}
-      >
-        {["Streaming", "Non-stream"].map((m) => (
+        {!collapsed && (
+          <>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontSize: 14, fontWeight: 600, color: "var(--ink)", letterSpacing: "-0.01em" }}>
+                Lathe®
+              </div>
+              <div style={{ fontSize: 11, color: "var(--ink-faint)", marginTop: 1 }}>Voice AI Bench</div>
+            </div>
+            <button
+              type="button"
+              onClick={() => setCollapsed(true)}
+              style={{
+                background: "none",
+                border: "none",
+                color: "var(--ink-faint)",
+                cursor: "pointer",
+                padding: 2,
+                flexShrink: 0,
+              }}
+            >
+              <Icon.Chevron
+                style={{
+                  width: 16,
+                  height: 16,
+                  transform: "rotate(90deg)",
+                  transition: "transform 0.25s ease",
+                }}
+              />
+            </button>
+          </>
+        )}
+        {collapsed && (
           <button
-            key={m}
             type="button"
-            onClick={() => onModeChange(m)}
+            onClick={() => setCollapsed(false)}
             style={{
-              flex: 1,
-              padding: "5px 0",
-              borderRadius: 8,
-              border: "none",
-              fontSize: 11.5,
-              fontWeight: 500,
+              position: "absolute",
+              top: 20,
+              right: -1,
+              background: "var(--bg-2)",
+              border: "1px solid var(--line-2)",
+              borderLeft: "none",
+              borderRadius: "0 8px 8px 0",
+              color: "var(--ink-faint)",
               cursor: "pointer",
-              transition: "all 0.2s",
-              background: mode === m ? "var(--bg-3)" : "transparent",
-              color: mode === m ? "var(--ink)" : "var(--ink-faint)",
-              boxShadow: mode === m ? "0 1px 3px rgba(0,0,0,0.3)" : "none",
+              padding: "4px 2px",
+              display: "flex",
+              alignItems: "center",
             }}
           >
-            {m}
+            <Icon.Chevron
+              style={{
+                width: 14,
+                height: 14,
+                transform: "rotate(-90deg)",
+                transition: "transform 0.25s ease",
+              }}
+            />
           </button>
-        ))}
+        )}
       </div>
 
+      {/* Segmented mode toggle — hidden when collapsed */}
+      {!collapsed && (
+        <div
+          style={{
+            display: "flex",
+            background: "var(--bg-2)",
+            borderRadius: 10,
+            padding: 3,
+            marginBottom: 20,
+            gap: 2,
+          }}
+        >
+          {["Streaming", "Non-stream"].map((m) => (
+            <button
+              key={m}
+              type="button"
+              onClick={() => onModeChange(m)}
+              style={{
+                flex: 1,
+                padding: "5px 0",
+                borderRadius: 8,
+                border: "none",
+                fontSize: 11.5,
+                fontWeight: 500,
+                cursor: "pointer",
+                transition: "all 0.2s",
+                background: mode === m ? "var(--bg-3)" : "transparent",
+                color: mode === m ? "var(--ink)" : "var(--ink-faint)",
+                boxShadow: mode === m ? "0 1px 3px rgba(0,0,0,0.3)" : "none",
+              }}
+            >
+              {m}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Nav */}
-      <nav style={{ display: "flex", flexDirection: "column", gap: 2, marginBottom: 16 }}>
+      <nav
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          marginBottom: 16,
+          alignItems: collapsed ? "center" : "stretch",
+        }}
+      >
         {NAV_ITEMS.map((item) => {
           const IconComp = Icon[item.icon]
           const isActive = activeTab === item.id
@@ -153,9 +206,17 @@ export function Sidebar({ activeTab, mode, onTabChange, onModeChange, providers 
               type="button"
               className={`v3-nav-item${isActive ? " active" : ""}`}
               onClick={() => onTabChange(item.id)}
-              style={{ width: "100%", textAlign: "left", background: "none", border: "none" }}
+              title={collapsed ? item.label : undefined}
+              style={{
+                width: "100%",
+                textAlign: "left",
+                background: "none",
+                border: "none",
+                justifyContent: collapsed ? "center" : undefined,
+                padding: collapsed ? "0.62rem" : undefined,
+              }}
             >
-              {isActive && (
+              {isActive && !collapsed && (
                 <span
                   style={{
                     width: 3,
@@ -168,9 +229,16 @@ export function Sidebar({ activeTab, mode, onTabChange, onModeChange, providers 
                   }}
                 />
               )}
-              <IconComp style={{ width: 15, height: 15, flexShrink: 0 }} />
-              <span style={{ flex: 1 }}>{item.label}</span>
-              {item.external && (
+              <IconComp
+                style={{
+                  width: 15,
+                  height: 15,
+                  flexShrink: 0,
+                  color: isActive ? "var(--lav-2)" : undefined,
+                }}
+              />
+              {!collapsed && <span style={{ flex: 1 }}>{item.label}</span>}
+              {!collapsed && item.external && (
                 <svg
                   viewBox="0 0 24 24"
                   width="11"
@@ -183,7 +251,7 @@ export function Sidebar({ activeTab, mode, onTabChange, onModeChange, providers 
                   <path d="M18 13v6H5V6h6M15 3h6v6M10 14 21 3" />
                 </svg>
               )}
-              {item.beta && (
+              {!collapsed && item.beta && (
                 <span
                   style={{
                     fontSize: 9,
@@ -203,102 +271,99 @@ export function Sidebar({ activeTab, mode, onTabChange, onModeChange, providers 
         })}
       </nav>
 
-      {/* Divider */}
-      <div className="div-h" style={{ marginBottom: 16 }} />
+      {/* Divider — hidden when collapsed */}
+      {!collapsed && <div className="div-h" style={{ marginBottom: 16 }} />}
 
-      {/* Active Runs */}
-      <div style={{ marginBottom: 12 }}>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 6,
-            marginBottom: 10,
-            paddingLeft: 8,
-          }}
-        >
-          <span style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-dim)", letterSpacing: "0.05em", textTransform: "uppercase" }}>
-            Active Runs
-          </span>
-          <span
-            className="v3-badge"
-            style={{ background: "rgba(74,222,128,0.15)", color: "#86efac" }}
+      {/* Active Runs — hidden when collapsed */}
+      {!collapsed && (
+        <div style={{ marginBottom: 12 }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 6,
+              marginBottom: 10,
+              paddingLeft: 8,
+            }}
           >
-            {displayProviders.length}
-          </span>
-          <Icon.Chevron style={{ width: 14, height: 14, color: "var(--ink-faint)", marginLeft: "auto" }} />
-        </div>
+            <span style={{ fontSize: 11, fontWeight: 600, color: "var(--ink-dim)", letterSpacing: "0.05em", textTransform: "uppercase" }}>
+              Active Runs
+            </span>
+            <span
+              className="v3-badge"
+              style={{ background: "rgba(74,222,128,0.15)", color: "#86efac" }}
+            >
+              {displayProviders.length}
+            </span>
+            <Icon.Chevron style={{ width: 14, height: 14, color: "var(--ink-faint)", marginLeft: "auto" }} />
+          </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-          {displayProviders.map((p) => {
-            const color = PROVIDER_COLORS[p] || "#a78bfa"
-            const label = PROVIDER_LABELS[p] || p
-            const p50 = MOCK_P50[p] || 400
-            return (
-              <div
-                key={p}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "6px 8px",
-                  borderRadius: 8,
-                  background: "rgba(255,255,255,0.02)",
-                }}
-              >
+          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+            {displayProviders.map((p) => {
+              const color = PROVIDER_COLORS[p] || "#a78bfa"
+              const label = PROVIDER_LABELS[p] || p
+              const p50 = p50Map[p] ?? null
+              return (
                 <div
-                  className="pulse-dot"
+                  key={p}
                   style={{
-                    width: 6,
-                    height: 6,
-                    borderRadius: "50%",
-                    background: color,
-                    flexShrink: 0,
-                  }}
-                />
-                <span style={{ fontSize: 12.5, color: "var(--ink-2)", flex: 1 }}>{label}</span>
-                <span
-                  style={{
-                    fontSize: 11,
-                    fontFamily: "Geist Mono, monospace",
-                    color,
-                    fontWeight: 500,
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 8,
+                    padding: "6px 8px",
+                    borderRadius: 8,
+                    background: "rgba(255,255,255,0.02)",
                   }}
                 >
-                  {p50}ms
-                </span>
-              </div>
-            )
-          })}
+                  <div
+                    className="pulse-dot"
+                    style={{
+                      width: 6,
+                      height: 6,
+                      borderRadius: "50%",
+                      background: color,
+                      flexShrink: 0,
+                    }}
+                  />
+                  <span style={{ fontSize: 12.5, color: "var(--ink-2)", flex: 1 }}>{label}</span>
+                  <span
+                    style={{
+                      fontSize: 11,
+                      fontFamily: "Geist Mono, monospace",
+                      color,
+                      fontWeight: 500,
+                    }}
+                  >
+                    {p50 != null ? `${p50}ms` : "—"}
+                  </span>
+                </div>
+              )
+            })}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Spacer */}
       <div style={{ flex: 1 }} />
 
-      {/* Activate Pro card */}
-      <div
-        className="v3-card-gradient"
-        style={{ padding: "16px", marginTop: 16 }}
-      >
-        <div
-          style={{ fontSize: 12, fontWeight: 600, color: "var(--lav-1)", marginBottom: 6 }}
-        >
-          Activate Pro
+      {/* Activate Pro card — hidden when collapsed */}
+      {!collapsed && (
+        <div className="v3-card-gradient" style={{ padding: "16px", marginTop: 16 }}>
+          <div style={{ fontSize: 12, fontWeight: 600, color: "var(--lav-1)", marginBottom: 6 }}>
+            Activate Pro
+          </div>
+          <div style={{ fontSize: 11.5, color: "var(--ink-dim)", lineHeight: 1.5, marginBottom: 12 }}>
+            Unlock unlimited runs, advanced analytics, and team collaboration.
+          </div>
+          <button
+            type="button"
+            className="v3-btn v3-btn-primary"
+            style={{ width: "100%", justifyContent: "center", fontSize: 12 }}
+          >
+            Upgrade Now
+          </button>
         </div>
-        <div
-          style={{ fontSize: 11.5, color: "var(--ink-dim)", lineHeight: 1.5, marginBottom: 12 }}
-        >
-          Unlock unlimited runs, advanced analytics, and team collaboration.
-        </div>
-        <button
-          type="button"
-          className="v3-btn v3-btn-primary"
-          style={{ width: "100%", justifyContent: "center", fontSize: 12 }}
-        >
-          Upgrade Now
-        </button>
-      </div>
+      )}
     </aside>
   )
 }

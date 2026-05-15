@@ -16,9 +16,10 @@ interface ResultsTableProps {
   results: TestResult[]
   activeProviders: ProviderName[]
   metric: MetricKey
+  baselineProvider?: ProviderName | null
 }
 
-export function ResultsTable({ results, activeProviders, metric }: ResultsTableProps) {
+export function ResultsTable({ results, activeProviders, metric, baselineProvider }: ResultsTableProps) {
   const [sortKey, setSortKey] = useState<SortKey>("test_id")
   const [sortDir, setSortDir] = useState<"asc" | "desc">("asc")
 
@@ -69,6 +70,9 @@ export function ResultsTable({ results, activeProviders, metric }: ResultsTableP
                 onClick={() => toggleSort(p)}
               >
                 {PROVIDER_LABELS[p]} ({metric.toUpperCase()}){arrow(p)}
+                {baselineProvider === p && (
+                  <span className="ml-1.5 text-xs font-normal opacity-60">baseline</span>
+                )}
               </th>
             ))}
           </tr>
@@ -102,6 +106,10 @@ export function ResultsTable({ results, activeProviders, metric }: ResultsTableP
                   )
                 }
                 const metricVal = out.ttfb?.[metric] ?? null
+                const baselineVal = baselineProvider && baselineProvider !== p
+                  ? (row.outputs[baselineProvider]?.ttfb?.[metric] ?? null)
+                  : null
+                const delta = metricVal != null && baselineVal != null ? metricVal - baselineVal : null
                 return (
                   <td key={p} className="px-4 py-3 align-top">
                     <div className="flex flex-col gap-2">
@@ -116,6 +124,14 @@ export function ResultsTable({ results, activeProviders, metric }: ResultsTableP
                         <Badge variant={ttfbVariant(metricVal)}>
                           {metric.toUpperCase()} {metricVal !== null ? `${Math.round(metricVal)}ms` : "—"}
                         </Badge>
+                        {delta !== null && (
+                          <Badge
+                            variant={delta <= 0 ? "green" : "red"}
+                            title={`vs ${PROVIDER_LABELS[baselineProvider!]} baseline`}
+                          >
+                            Δ {delta > 0 ? "+" : ""}{Math.round(delta)}ms
+                          </Badge>
+                        )}
                         {out.ttfb && metric !== "p95" && (
                           <Badge variant="secondary" title="p95 TTFB">
                             p95 {Math.round(out.ttfb.p95)}ms

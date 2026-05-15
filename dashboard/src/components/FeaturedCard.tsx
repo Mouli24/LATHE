@@ -1,6 +1,10 @@
 import { Icon } from "./icons"
 
-export function FeaturedCard() {
+interface FeaturedCardProps {
+  onNavigate?: (tab: string) => void
+}
+
+export function FeaturedCard({ onNavigate }: FeaturedCardProps) {
   return (
     <div
       className="v3-card-gradient fade-up"
@@ -64,6 +68,7 @@ export function FeaturedCard() {
           type="button"
           className="v3-btn v3-btn-primary"
           style={{ fontSize: 12.5, padding: "7px 14px", borderRadius: 10 }}
+          onClick={() => onNavigate?.("liquid")}
         >
           <Icon.Sparkle style={{ width: 13, height: 13 }} />
           Try Now
@@ -72,6 +77,7 @@ export function FeaturedCard() {
           type="button"
           className="v3-btn v3-btn-violet"
           style={{ fontSize: 12.5, padding: "7px 14px", borderRadius: 10 }}
+          onClick={() => onNavigate?.("liquid")}
         >
           Learn More
         </button>
